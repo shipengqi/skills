@@ -1,0 +1,97 @@
+{
+  "name": "skills",
+  "id": "shipengqi-skills",
+  "owner": {
+    "name": "shipengqi"
+  },
+  "metadata": {
+    "description": "Engineering best-practice skills for Go and TypeScript",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "golang-language",
+      "source": "./golang/golang-language",
+      "description": "Go naming, interfaces, package layout, and anti-patterns",
+      "category": "language",
+      "tags": ["go", "golang", "language"]
+    },
+    {
+      "name": "golang-error-handling",
+      "source": "./golang/golang-error-handling",
+      "description": "ErrorX sentinel pattern, errno directory, error propagation by layer",
+      "category": "language",
+      "tags": ["go", "golang", "errors"]
+    },
+    {
+      "name": "golang-logging",
+      "source": "./golang/golang-logging",
+      "description": "Zap Sugar API, log.W(ctx) context propagation, per-layer logging rules",
+      "category": "language",
+      "tags": ["go", "golang", "logging", "zap"]
+    },
+    {
+      "name": "golang-architecture",
+      "source": "./golang/golang-architecture",
+      "description": "Clean Architecture layers (handler→biz→store→model) and Google Wire DI",
+      "category": "architecture",
+      "tags": ["go", "golang", "architecture", "wire", "clean-architecture"]
+    },
+    {
+      "name": "golang-testing",
+      "source": "./golang/golang-testing",
+      "description": "Table-driven tests, mockgen, testify assertions, benchmarks",
+      "category": "testing",
+      "tags": ["go", "golang", "testing", "mockgen", "testify"]
+    },
+    {
+      "name": "golang-api-server",
+      "source": "./golang/golang-api-server",
+      "description": "Framework-agnostic Server interface, graceful shutdown, unified response",
+      "category": "backend",
+      "tags": ["go", "golang", "api", "server", "graceful-shutdown"]
+    },
+    {
+      "name": "golang-gin",
+      "source": "./golang/golang-gin",
+      "description": "Gin engine setup, middleware chain, route groups, HandleJSONRequest pattern",
+      "category": "backend",
+      "tags": ["go", "golang", "gin", "http"]
+    },
+    {
+      "name": "golang-echo",
+      "source": "./golang/golang-echo",
+      "description": "Echo framework patterns — binding, middleware, error handler",
+      "category": "backend",
+      "tags": ["go", "golang", "echo", "http"]
+    },
+    {
+      "name": "golang-fiber",
+      "source": "./golang/golang-fiber",
+      "description": "Fiber/fasthttp patterns — UserContext, BodyParser, concurrency gotchas",
+      "category": "backend",
+      "tags": ["go", "golang", "fiber", "fasthttp", "http"]
+    },
+    {
+      "name": "golang-nethttp",
+      "source": "./golang/golang-nethttp",
+      "description": "net/http + chi router patterns — standard library HTTP server",
+      "category": "backend",
+      "tags": ["go", "golang", "net/http", "chi", "http"]
+    },
+    {
+      "name": "typescript-language",
+      "source": "./typescript/typescript-language",
+      "description": "TypeScript strict config, type patterns, no-any/enum/!, brand types",
+      "category": "language",
+      "tags": ["typescript", "types", "strict"]
+    },
+    {
+      "name": "typescript-best-practices",
+      "source": "./typescript/typescript-best-practices",
+      "description": "Async/await, Promise.all, error handling at boundaries, Vitest testing",
+      "category": "language",
+      "tags": ["typescript", "async", "vitest", "testing"]
+    }
+  ]
+}

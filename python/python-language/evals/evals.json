@@ -1,0 +1,38 @@
+{
+  "skill_name": "python-language",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "What's the idiomatic way to define a set of related string constants in Python 3.11+?",
+      "expected_output": "Use StrEnum. Define a class inheriting from StrEnum with string values. This is zero-overhead, Pydantic-native, and avoids the 'str, Enum' combination anti-pattern. Example: class Status(StrEnum): ACTIVE = 'active'",
+      "assertions": [
+        { "type": "contains", "value": "StrEnum" },
+        { "type": "contains", "value": "class" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I have a Python function that accepts a list of strings and returns a dictionary. Do I need type annotations?",
+      "expected_output": "Yes. All public functions must have complete type annotations. Use lowercase built-in generics (list, dict) instead of List/Dict from typing (PEP 585). Use X | None instead of Optional[X] (Python 3.10+). Example: def process(items: list[str]) -> dict[str, int]",
+      "assertions": [
+        { "type": "contains", "value": "list[str]" },
+        { "type": "contains", "value": "dict" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What are the main anti-patterns to avoid in Python code?",
+      "expected_output": "Avoid mutable default arguments (use None and initialize in body). Avoid bare except: clauses. Avoid type: ignore everywhere (fix root cause). Avoid print() for logging (use loguru). Avoid from module import * (use explicit imports). Avoid global mutable state (inject dependencies via constructor).",
+      "assertions": [
+        { "type": "contains", "value": "mutable" },
+        { "type": "contains", "value": "except" },
+        { "type": "contains", "value": "import" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I set up a FastAPI router with authentication middleware?",
+    "Write a pytest fixture that creates an in-memory SQLite database",
+    "What's the difference between asyncio.gather and TaskGroup?"
+  ]
+}

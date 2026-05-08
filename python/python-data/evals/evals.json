@@ -1,0 +1,38 @@
+{
+  "skill_name": "python-data",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My Pandas script is slow because I'm using iterrows() to compute a new column. How do I fix it?",
+      "expected_output": "Replace iterrows() with vectorized operations. For simple arithmetic use direct column operations: df['result'] = df['a'] + df['b']. For string operations use the .str accessor: df['domain'] = df['email'].str.split('@').str[1]. Only fall back to .apply() for complex row-level logic that cannot be vectorized. iterrows() is 10-100x slower than vectorized operations.",
+      "assertions": [
+        { "type": "contains", "value": "vectorized" },
+        { "type": "contains", "value": "iterrows" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm loading a 10GB CSV file with Pandas and running out of memory. What are my options?",
+      "expected_output": "Three approaches: (1) Read in chunks with chunksize parameter: for chunk in pd.read_csv(path, chunksize=100_000). (2) Specify dtypes to reduce memory: use int32 instead of int64, 'category' for low-cardinality strings, float32 instead of float64. (3) Switch to Polars with pl.scan_csv() for lazy evaluation — it processes data without loading everything into memory.",
+      "assertions": [
+        { "type": "contains", "value": "chunksize" },
+        { "type": "contains", "value": "dtype" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "When should I use Polars instead of Pandas for a new data processing project?",
+      "expected_output": "Switch to Polars when: data is larger than 1GB (Polars is 5-10x faster), you need true parallelism (Pandas is single-threaded, Polars uses all cores), or you want lazy evaluation for streaming large datasets with LazyFrame. Keep Pandas for existing codebases, Jupyter exploration, or when ecosystem tools require it.",
+      "assertions": [
+        { "type": "contains", "value": "Polars" },
+        { "type": "contains", "value": "parallel" },
+        { "type": "contains", "value": "LazyFrame" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I set up a FastAPI router with JWT authentication?",
+    "Write a Typer CLI command with subcommands for user management",
+    "How should I propagate errors across service layers in Python?"
+  ]
+}

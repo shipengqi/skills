@@ -1,0 +1,25 @@
+{
+  "name": "@shipengqi/claude-skills",
+  "version": "0.1.0",
+  "description": "Engineering best-practice skills for Claude Code — Go and TypeScript",
+  "bin": {
+    "claude-skills": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "golang/",
+    "typescript/",
+    ".claude-plugin/"
+  ],
+  "keywords": ["claude", "claude-code", "skills", "golang", "typescript"],
+  "author": "shipengqi",
+  "license": "MIT",
+  "homepage": "https://github.com/shipengqi/skills",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shipengqi/skills.git"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

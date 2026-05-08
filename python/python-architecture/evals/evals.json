@@ -1,0 +1,39 @@
+{
+  "skill_name": "python-architecture",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm building a FastAPI service with SQLAlchemy. What are the top-level directories and what goes in each?",
+      "expected_output": "Use a domain-grouped structure under src/. Each domain (auth, posts) has router.py, schemas.py, models.py, service.py, repository.py, dependencies.py, exceptions.py. Core infrastructure goes in src/core/. Dependency direction: router → service → repository → models. Never import repository directly from router.",
+      "assertions": [
+        { "type": "contains", "value": "router" },
+        { "type": "contains", "value": "service" },
+        { "type": "contains", "value": "repository" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Should I call session.commit() inside my repository method in SQLAlchemy async?",
+      "expected_output": "No. Repository methods should only call session.flush() to get auto-generated IDs without committing. The transaction lifecycle is managed by the caller (service layer or the FastAPI Depends() session context manager). Committing in the repository breaks unit-of-work patterns.",
+      "assertions": [
+        { "type": "contains", "value": "flush" },
+        { "type": "contains", "value": "commit" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I define a SQLAlchemy 2.x ORM model for a users table with an auto-increment ID and a created_at timestamp?",
+      "expected_output": "Use DeclarativeBase and Mapped[] type annotations (SQLAlchemy 2.x style). Avoid old-style Column(). Example: class User(Base): __tablename__ = 'users'; id: Mapped[int] = mapped_column(primary_key=True); created_at: Mapped[datetime] = mapped_column(server_default=func.now())",
+      "assertions": [
+        { "type": "contains", "value": "Mapped" },
+        { "type": "contains", "value": "mapped_column" },
+        { "type": "contains", "value": "DeclarativeBase" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I write a parametrized pytest test for a validation function?",
+    "Configure loguru to output JSON logs in production",
+    "What's the idiomatic way to define Python enums?"
+  ]
+}

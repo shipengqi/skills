@@ -1,0 +1,38 @@
+{
+  "skill_name": "python-cli",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I build a Python CLI tool with subcommands like 'myapp users list' and 'myapp db migrate'?",
+      "expected_output": "Use Typer. Create a main app = typer.Typer() and separate sub-apps for each domain. Add them with app.add_typer(users.app, name='users'). Define commands with @app.command(). Register the entry point in pyproject.toml under [project.scripts]. Use no_args_is_help=True so running the command without arguments shows help.",
+      "assertions": [
+        { "type": "contains", "value": "Typer" },
+        { "type": "contains", "value": "add_typer" },
+        { "type": "contains", "value": "project.scripts" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I restrict a CLI argument to only accept specific values like 'dev', 'staging', or 'prod'?",
+      "expected_output": "Use StrEnum for the argument type. Define class Environment(StrEnum): DEV = 'dev'; STAGING = 'staging'; PROD = 'prod'. Use it as the parameter type: def deploy(env: Annotated[Environment, typer.Argument()]). Typer automatically restricts input to valid enum values and shows them in --help output.",
+      "assertions": [
+        { "type": "contains", "value": "StrEnum" },
+        { "type": "contains", "value": "Argument" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My CLI command fails and I want the process to exit with a non-zero exit code so CI pipelines can detect the failure. How?",
+      "expected_output": "Raise typer.Exit(code=1) instead of sys.exit(1). For user-aborted flows use raise typer.Abort(). Print error messages to stderr with typer.echo('Error: ...', err=True) so they don't pollute stdout in piped workflows. Never use sys.exit() directly in Typer commands.",
+      "assertions": [
+        { "type": "contains", "value": "typer.Exit" },
+        { "type": "contains", "value": "err=True" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I configure pytest-asyncio for FastAPI endpoint tests?",
+    "What's the correct way to use asyncio.to_thread for blocking calls?",
+    "How do I define SQLAlchemy 2.x models with Mapped type annotations?"
+  ]
+}

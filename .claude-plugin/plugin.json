@@ -1,0 +1,26 @@
+{
+  "name": "skills",
+  "description": "Engineering best-practice skills for Go and TypeScript — based on miniblog, Google TypeScript Style Guide, and Total TypeScript. Covers architecture, error handling, logging, testing, Gin/Echo/Fiber/net/http, and async patterns.",
+  "version": "0.1.0",
+  "author": {
+    "name": "shipengqi"
+  },
+  "homepage": "https://github.com/shipengqi/skills",
+  "repository": "https://github.com/shipengqi/skills",
+  "license": "MIT",
+  "keywords": ["go", "golang", "typescript", "best-practices", "architecture", "gin", "echo", "fiber"],
+  "skills": [
+    "./golang/golang-language",
+    "./golang/golang-error-handling",
+    "./golang/golang-logging",
+    "./golang/golang-architecture",
+    "./golang/golang-testing",
+    "./golang/golang-api-server",
+    "./golang/golang-gin",
+    "./golang/golang-echo",
+    "./golang/golang-fiber",
+    "./golang/golang-nethttp",
+    "./typescript/typescript-language",
+    "./typescript/typescript-best-practices"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "skill_name": "python-async",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have an async FastAPI route that calls a synchronous boto3 SDK method. The app becomes unresponsive under load. What's wrong and how do I fix it?",
+      "expected_output": "The sync boto3 call is blocking the event loop from inside an async route. Fix it with run_in_threadpool from Starlette: 'await run_in_threadpool(boto3_client.method, args)'. Alternatively use asyncio.to_thread(). Blocking I/O in an async function freezes all concurrent requests until it completes.",
+      "assertions": [
+        { "type": "contains", "value": "run_in_threadpool" },
+        { "type": "contains", "value": "blocking" },
+        { "type": "contains", "value": "event loop" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I need to fetch user data, their posts, and notification count simultaneously in a FastAPI endpoint. How do I run these three async calls concurrently?",
+      "expected_output": "Use asyncio.gather() to run all three coroutines concurrently: 'user, posts, notifications = await asyncio.gather(get_user(id), get_posts(id), get_count(id))'. For Python 3.11+ prefer TaskGroup which automatically cancels remaining tasks if one fails. Don't await them sequentially — that's 3x slower.",
+      "assertions": [
+        { "type": "contains", "value": "gather" },
+        { "type": "contains", "value": "concurrent" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Should I define all my FastAPI route functions as async def?",
+      "expected_output": "No. Only use async def when the function actually awaits something (DB query, HTTP call, file I/O). For simple data transformations or CPU work, use def — FastAPI automatically runs sync routes in a threadpool. An async def with no awaits is just a regular function with overhead. Using async def incorrectly with blocking I/O will freeze the event loop.",
+      "assertions": [
+        { "type": "contains", "value": "async def" },
+        { "type": "contains", "value": "threadpool" },
+        { "type": "contains", "value": "blocking" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I configure Alembic for async SQLAlchemy migrations?",
+    "Write a pytest fixture for a FastAPI test client",
+    "What naming conventions should I follow for Python functions and classes?"
+  ]
+}

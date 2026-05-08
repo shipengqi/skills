@@ -1,0 +1,39 @@
+{
+  "skill_name": "python-fastapi",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I share a database session and avoid creating a new connection for every Depends() call in FastAPI?",
+      "expected_output": "FastAPI caches Depends() results within the same request scope by default. Define get_db as an async generator yielding the session. Any dependency that calls Depends(get_db) within the same request reuses the same session instance. This is automatic — no extra configuration needed.",
+      "assertions": [
+        { "type": "contains", "value": "Depends" },
+        { "type": "contains", "value": "cache" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm using @app.on_event('startup') to initialize my database. Is this the right approach?",
+      "expected_output": "No. @app.on_event is deprecated. Use the lifespan context manager instead: define an async function decorated with @asynccontextmanager that yields, and pass it to FastAPI(lifespan=lifespan). Code before yield runs on startup, code after yield runs on shutdown.",
+      "assertions": [
+        { "type": "contains", "value": "lifespan" },
+        { "type": "contains", "value": "asynccontextmanager" },
+        { "type": "contains", "value": "deprecated" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I create a reusable dependency for the currently authenticated user that can be used across multiple routers?",
+      "expected_output": "Define get_current_user as an async dependency function that extracts and verifies the JWT token. Then create a type alias using Annotated: CurrentUser = Annotated[User, Depends(get_current_user)]. Use this alias as a parameter type in any route function. FastAPI will inject the dependency automatically.",
+      "assertions": [
+        { "type": "contains", "value": "Annotated" },
+        { "type": "contains", "value": "CurrentUser" },
+        { "type": "contains", "value": "Depends" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I write a table-driven test for a Python validation function?",
+    "What's the idiomatic way to handle asyncio.gather exceptions?",
+    "How should I structure Pandas DataFrames for ETL pipelines?"
+  ]
+}

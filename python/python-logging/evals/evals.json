@@ -1,0 +1,39 @@
+{
+  "skill_name": "python-logging",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I set up structured logging in a FastAPI application that outputs JSON in production and colored text in development?",
+      "expected_output": "Use loguru. Call logger.remove() then logger.add(sys.stdout, serialize=True) for JSON (production) or serialize=False with a format string for development. Initialize in the FastAPI lifespan context manager before anything else. Use settings.is_production to switch format.",
+      "assertions": [
+        { "type": "contains", "value": "loguru" },
+        { "type": "contains", "value": "serialize" },
+        { "type": "contains", "value": "lifespan" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I want every log line in my FastAPI service to automatically include the request ID. How do I do this without passing the logger around?",
+      "expected_output": "Use logger.contextualize() in a middleware. In an HTTP middleware, extract X-Request-ID from headers (or generate one), then wrap the call_next() with 'with logger.contextualize(request_id=request_id):'. All log calls within that request context will automatically include the request_id field.",
+      "assertions": [
+        { "type": "contains", "value": "contextualize" },
+        { "type": "contains", "value": "middleware" },
+        { "type": "contains", "value": "request_id" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Should my repository layer log database errors before raising them?",
+      "expected_output": "No. The repository layer should not log — just raise business exceptions. Logging belongs in the service layer for internal technical failures. The repository's job is to catch SQLAlchemy errors and convert them to domain exceptions. This avoids double-logging and keeps the repository focused.",
+      "assertions": [
+        { "type": "contains", "value": "repository" },
+        { "type": "contains", "value": "service" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I define a custom exception hierarchy for a FastAPI service?",
+    "Write a pytest fixture for an async SQLAlchemy session",
+    "What's the correct Python type annotation for a function returning a list of strings?"
+  ]
+}

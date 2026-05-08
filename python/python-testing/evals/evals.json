@@ -1,0 +1,39 @@
+{
+  "skill_name": "python-testing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I write a table-driven test for a Python function that validates usernames?",
+      "expected_output": "Use @pytest.mark.parametrize with a list of tuples containing (username, expected_valid). Each tuple becomes one test case with a clear failure message. Example: @pytest.mark.parametrize('username,expected_valid', [('valid_user', True), ('ab', False), ('user*name', False)]). This is the Python equivalent of Go table-driven tests.",
+      "assertions": [
+        { "type": "contains", "value": "parametrize" },
+        { "type": "contains", "value": "pytest" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My FastAPI service depends on an async repository. How do I unit test the service without hitting a real database?",
+      "expected_output": "Use pytest-mock's mocker fixture to create an AsyncMock of the repository. Pass it to the service constructor directly (constructor injection). Use mocker.AsyncMock() for async methods. Assert calls with assert_called_once_with(). This avoids the @patch decorator nesting anti-pattern.",
+      "assertions": [
+        { "type": "contains", "value": "mocker" },
+        { "type": "contains", "value": "AsyncMock" },
+        { "type": "contains", "value": "fixture" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I write integration tests for FastAPI endpoints using a real in-memory database?",
+      "expected_output": "Create a db_session fixture that uses SQLite in-memory (sqlite+aiosqlite:///:memory:), creates all tables, and yields the session. Create a client fixture that overrides get_db via app.dependency_overrides[get_db] = lambda: db_session. Use httpx AsyncClient with ASGITransport. Set asyncio_mode = 'auto' in pyproject.toml.",
+      "assertions": [
+        { "type": "contains", "value": "dependency_overrides" },
+        { "type": "contains", "value": "AsyncClient" },
+        { "type": "contains", "value": "ASGITransport" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I configure loguru to rotate log files daily?",
+    "What's the difference between async def and def routes in FastAPI?",
+    "How should I structure custom exceptions across multiple domains?"
+  ]
+}

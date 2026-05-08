@@ -1,0 +1,39 @@
+{
+  "skill_name": "python-error-handling",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How should I structure custom exceptions in a FastAPI service with multiple domains (users, posts, payments)?",
+      "expected_output": "Define a base AppError class in src/core/exceptions.py with status_code, detail, and code class attributes. Then subclass NotFoundError, ConflictError, UnauthorizedError etc. Each domain creates its own exceptions.py (UserNotFound, PostNotFound) that extends the core base classes. Register a single global exception_handler for AppError in main.py.",
+      "assertions": [
+        { "type": "contains", "value": "AppError" },
+        { "type": "contains", "value": "status_code" },
+        { "type": "contains", "value": "exception_handler" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My repository gets an IntegrityError from SQLAlchemy when a duplicate user is inserted. How should I handle this?",
+      "expected_output": "Catch IntegrityError in the repository method and raise a domain-specific ConflictError (e.g. UserAlreadyExists). Never let raw SQLAlchemy errors propagate to the service or router layers — they leak implementation details. Repository should raise business exceptions, not HTTP exceptions.",
+      "assertions": [
+        { "type": "contains", "value": "IntegrityError" },
+        { "type": "contains", "value": "ConflictError" },
+        { "type": "contains", "value": "repository" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Should I use try/except in every FastAPI route function to return different HTTP status codes?",
+      "expected_output": "No. Register a single global exception handler via app.add_exception_handler(AppError, handler). Business exceptions automatically map to HTTP status codes through their status_code class attribute. Route functions should not contain try/except — let exceptions propagate to the global handler.",
+      "assertions": [
+        { "type": "contains", "value": "exception_handler" },
+        { "type": "contains", "value": "propagate" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I configure structured JSON logging in Python?",
+    "Write an async SQLAlchemy query to fetch paginated users",
+    "What's the correct way to use asyncio.gather with error handling?"
+  ]
+}
