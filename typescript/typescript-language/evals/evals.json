@@ -1,0 +1,37 @@
+{
+  "skill_name": "typescript-language",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm using enums in TypeScript for user roles. Is this the right approach?",
+      "expected_output": "Avoid TypeScript enums — they have runtime cost and cause issues with tree-shaking. Use literal unions or as const instead: type Role = 'admin' | 'user' | 'guest' or const ROLES = { ADMIN: 'admin' } as const; type Role = typeof ROLES[keyof typeof ROLES]. This is zero-runtime and fully type-safe.",
+      "assertions": [
+        { "type": "contains", "value": "as const" },
+        { "type": "contains", "value": "union" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I make TypeScript enforce that I handle all cases in a union type switch?",
+      "expected_output": "Use discriminated unions with a literal discriminant field (e.g. kind or type). Add a never exhaustiveness check in the default case: default: { const _exhaustive: never = x; throw new Error('Unhandled case'); }. TypeScript will report a type error if you add a new union member without handling it.",
+      "assertions": [
+        { "type": "contains", "value": "never" },
+        { "type": "contains", "value": "discriminated" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I prevent a string user ID from being accidentally passed where a post ID is expected in TypeScript?",
+      "expected_output": "Use Branded Types: type UserId = string & { __brand: 'UserId' }. Create a type guard or cast function: function asUserId(id: string): UserId { return id as UserId; }. This prevents mixing up IDs of different types at compile time with zero runtime overhead.",
+      "assertions": [
+        { "type": "contains", "value": "Branded" },
+        { "type": "contains", "value": "__brand" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I set up async/await error handling in TypeScript with custom error classes?",
+    "Configure a Go service with Wire dependency injection",
+    "Write a pytest fixture for an async SQLAlchemy session"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "evals": [
+    {
+      "input": "How do I inject the git version, commit, and build date into my Go binary at compile time?",
+      "expected_keywords": ["ldflags", "-X", "gitVersion", "git describe", "GIT_COMMIT", "buildDate"],
+      "expected_concepts": ["GO_LDFLAGS variable in common.mk", "VERSION_PACKAGE pointing to version pkg", "git describe --tags --always --match='v*' for semver", "date -u for buildDate"],
+      "should_not_trigger": false
+    },
+    {
+      "input": "How should I structure a large Go project's Makefile to keep it maintainable?",
+      "expected_keywords": ["hack/include", "include", "common.mk", "golang.mk", "tools.mk", "dispatcher"],
+      "expected_concepts": ["thin top-level Makefile as dispatcher", "include hack/include/*.mk split", "each *.mk has a single responsibility", "go.build/go.test/go.lint targets in golang.mk"],
+      "should_not_trigger": false
+    },
+    {
+      "input": "How do I automatically install golangci-lint if it's missing when someone runs make lint?",
+      "expected_keywords": ["tools.verify.%", "tools.install.%", "which", "prerequisite"],
+      "expected_concepts": ["tools.verify.% dynamic pattern checks with `which`", "tools.install.% installs via go install", "declare tools.verify.golangci-lint as prerequisite of go.lint"],
+      "should_not_trigger": false
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "input": "How do I write unit tests in Go using Ginkgo?",
+      "reason": "golang-testing skill handles Ginkgo/Gomega"
+    },
+    {
+      "input": "How should I structure my API handlers using Clean Architecture?",
+      "reason": "golang-architecture skill handles layer structure and Wire DI"
+    }
+  ]
+}

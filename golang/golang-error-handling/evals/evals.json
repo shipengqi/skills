@@ -1,0 +1,40 @@
+{
+  "skill_name": "golang-error-handling",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I define and organize errors in a Go service?",
+      "expected_output": "Define all errors as *errorsx.ErrorX sentinels in internal/pkg/errno/. One file per domain (user.go, post.go) plus code.go for generic errors. Each sentinel has Code (HTTP status), Reason (Domain.SpecificReason format), and Message. Use .WithMessage() to add runtime context, never fmt.Errorf for business errors.",
+      "assertions": [
+        { "type": "contains", "value": "errno" },
+        { "type": "contains", "value": "ErrorX" },
+        { "type": "contains", "value": "Reason" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm getting a gorm ErrRecordNotFound in my store layer. Should I return it directly?",
+      "expected_output": "No. Always convert external errors to errno sentinels at the store layer. Use errors.Is(err, gorm.ErrRecordNotFound) to detect it, then return errno.ErrPostNotFound or similar. Never return raw gorm errors up the stack — they leak implementation details. Store layer logs nothing, just returns errno.",
+      "assertions": [
+        { "type": "contains", "value": "errors.Is" },
+        { "type": "contains", "value": "errno" },
+        { "type": "contains", "value": "store" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Should I log the error AND return it at the same time in my biz layer?",
+      "expected_output": "No. Log the raw technical error where you have context, but return a sanitized errno sentinel. Never log + return the same raw error — that's double-exposure. Biz logs internal failures (compare password, external API), then returns errno. User-visible errors are returned directly without logging.",
+      "assertions": [
+        { "type": "contains", "value": "log" },
+        { "type": "contains", "value": "errno" },
+        { "type": "contains", "value": "sanitized" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I write a Go package layout following the miniblog style?",
+    "Set up Wire dependency injection for a Go service",
+    "Write a benchmark test for a Go function"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "skill_name": "typescript-best-practices",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need to call three independent async TypeScript functions. Should I await them sequentially?",
+      "expected_output": "No. Use Promise.all for independent concurrent calls: const [a, b, c] = await Promise.all([fnA(), fnB(), fnC()]). Awaiting sequentially is 3x slower when operations don't depend on each other. Use Promise.allSettled when you need all results even if some fail.",
+      "assertions": [
+        { "type": "contains", "value": "Promise.all" },
+        { "type": "contains", "value": "concurrent" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Where should I put try/catch blocks in my TypeScript service?",
+      "expected_output": "Catch only at system boundaries — HTTP handlers, CLI entry points, event consumers — not in every function. Inner functions should throw and let errors propagate. Use catch (e: unknown) and narrow the type before accessing properties. Avoid catch (e: any). Never swallow errors silently.",
+      "assertions": [
+        { "type": "contains", "value": "boundaries" },
+        { "type": "contains", "value": "catch (e: unknown)" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How should I structure dependency injection in a TypeScript service without a DI framework?",
+      "expected_output": "Use constructor injection. Define interfaces for dependencies, pass them in the constructor, store as private readonly fields. This makes dependencies explicit and easy to mock in tests. Avoid module-level singletons and global state. Use export default sparingly — prefer named exports for better tree-shaking and refactoring.",
+      "assertions": [
+        { "type": "contains", "value": "constructor" },
+        { "type": "contains", "value": "interface" },
+        { "type": "contains", "value": "private" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I use Branded Types to prevent mixing string IDs in TypeScript?",
+    "Configure a Go Gin engine with the correct middleware order",
+    "Write a parametrized pytest test for a Python validation function"
+  ]
+}

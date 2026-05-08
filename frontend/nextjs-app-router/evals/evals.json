@@ -1,0 +1,37 @@
+{
+  "skill_name": "nextjs-app-router",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "What's the difference between Server Components and Client Components in Next.js App Router?",
+      "expected_output": "Server Components (default) run only on the server — they can async/await, read env vars, and access databases directly. Client Components ('use client') run in the browser and can use useState, useEffect, and event handlers. Push 'use client' as low as possible in the component tree — keep layouts, pages, and data-fetching as Server Components for better performance.",
+      "assertions": [
+        { "type": "contains", "value": "use client" },
+        { "type": "contains", "value": "Server Component" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I add shared authentication layout to a group of routes in Next.js without it appearing in the URL?",
+      "expected_output": "Use route groups — wrap routes in a (group-name) folder. The parentheses make it a route group that shares a layout but doesn't add a URL segment. For example, app/(dashboard)/layout.tsx applies to all routes under (dashboard)/ without /dashboard appearing in the URL. Each route group can have its own layout.tsx.",
+      "assertions": [
+        { "type": "contains", "value": "route group" },
+        { "type": "contains", "value": "layout" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I show a loading skeleton while a Next.js page fetches data?",
+      "expected_output": "Create a loading.tsx file in the same directory as page.tsx. Next.js automatically wraps the page in a Suspense boundary and shows loading.tsx as the fallback while the page is streaming. For per-section loading, wrap components in explicit <Suspense fallback={<Skeleton />}> boundaries. No manual loading state needed in Server Components.",
+      "assertions": [
+        { "type": "contains", "value": "loading.tsx" },
+        { "type": "contains", "value": "Suspense" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I use React Suspense with TanStack Query in a Client Component?",
+    "Configure Angular lazy loading for route modules",
+    "Set up NestJS route controllers with path parameters"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "skill_name": "golang-logging",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I write a log statement in Go that includes the current user ID and request ID automatically?",
+      "expected_output": "Use log.W(ctx) instead of package-level log functions. log.W(ctx) automatically extracts X-Request-ID and X-User-ID from context and adds them to every log line. Pass key-value pairs as arguments: log.W(ctx).Infow('User created', 'username', username). Never add request ID or user ID fields manually.",
+      "assertions": [
+        { "type": "contains", "value": "log.W(ctx)" },
+        { "type": "contains", "value": "context" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I want to format my log message as 'Failed for user alice'. Is this correct?",
+      "expected_output": "No. Never format values into the message string. Use key-value pairs instead: log.W(ctx).Errorw('Failed for user', 'user', uid). This keeps the message constant and indexable by log systems. Also avoid zap typed fields (zap.String, zap.Error) with the Sugar API — they break the API contract.",
+      "assertions": [
+        { "type": "contains", "value": "key-value" },
+        { "type": "contains", "value": "message" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Which layers of my Go service should log errors?",
+      "expected_output": "Only the biz layer logs internal technical failures. Handler layer does not log — core.HandleJSONRequest handles it. Store layer does not log — just returns errno.ErrDBRead.WithMessage(err.Error()). Server init logs startup/shutdown events. The rule: log raw technical error where you have context, return sanitized errno sentinel.",
+      "assertions": [
+        { "type": "contains", "value": "biz" },
+        { "type": "contains", "value": "store" },
+        { "type": "contains", "value": "handler" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I define custom error sentinels in the errno package?",
+    "Set up a Gin HTTP server with middleware chain",
+    "How do I write table-driven tests with testify in Go?"
+  ]
+}

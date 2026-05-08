@@ -56,24 +56,20 @@ return nil, fmt.Errorf("user not found: %w", err)
 ## Error Propagation by Layer
 
 ```
-handler (ultra-thin, no manual error handling)
-  └── core.HandleJSONRequest — writes response, catches all errors
+handler → biz → store
 
-biz layer
-  ├── internal errors: log.W(ctx).Errorw("reason", "err", err) + return errno.ErrXxx
-  └── user-visible errors: return errno.ErrXxx (no log)
-
-store layer
-  └── no logging — return errno.ErrDBRead.WithMessage(err.Error())
+handler: ultra-thin — HandleJSONRequest catches all errors, no logging
+biz:     ONLY layer that logs — log raw err, return errno sentinel
+store:   no logging — errno.ErrXxx.WithMessage(err.Error())
 ```
 
-**Rule**: Log the raw technical error where you have context; always return an `errno` sentinel (never raw errors from biz/store up).
+**Rule**: Log **once** at biz where you have context; always return an `errno` sentinel (never raw errors from biz/store up).
 
 ```go
-// biz — internal failure: log raw err, return sanitized errno
+// biz — log raw err, return sanitized errno
 if err := authn.Compare(userM.Password, rq.GetPassword()); err != nil {
     log.W(ctx).Errorw("Failed to compare password", "err", err)
-    return nil, errno.ErrPasswordInvalid  // ← sanitized, no raw err exposed
+    return nil, errno.ErrPasswordInvalid
 }
 
 // store — no log, wrap with errno
@@ -124,6 +120,7 @@ One file per domain. Generic cross-domain errors live in `code.go`.
 - ❌ `fmt.Errorf("...: %w", err)` for business errors — use errno sentinel + `.WithMessage()`
 - ❌ `strings.Contains(err.Error(), "not found")` — use `errors.Is`/`errors.As` or `.Is()`
 - ❌ Defining errors inline: `errors.New("user not found")` — all errors go in `errno/`
+- ❌ Logging at every layer — log once at biz; suppress at store/handler
 
 ## References
 

@@ -1,6 +1,6 @@
 {
   "name": "skills",
-  "description": "Engineering best-practice skills for Go and TypeScript — based on miniblog, Google TypeScript Style Guide, and Total TypeScript. Covers architecture, error handling, logging, testing, Gin/Echo/Fiber/net/http, and async patterns.",
+  "description": "Engineering best-practice skills for Go, TypeScript, Python, React, Angular, Next.js, and NestJS — covering architecture, error handling, logging, testing, HTTP frameworks, async patterns, forms, and state management.",
   "version": "0.1.0",
   "author": {
     "name": "shipengqi"
@@ -8,7 +8,10 @@
   "homepage": "https://github.com/shipengqi/skills",
   "repository": "https://github.com/shipengqi/skills",
   "license": "MIT",
-  "keywords": ["go", "golang", "typescript", "best-practices", "architecture", "gin", "echo", "fiber"],
+  "keywords": [
+    "go", "golang", "typescript", "python", "react", "angular", "nextjs", "nestjs",
+    "best-practices", "architecture", "gin", "echo", "fiber", "fastapi", "prisma"
+  ],
   "skills": [
     "./golang/golang-language",
     "./golang/golang-error-handling",
@@ -20,7 +23,38 @@
     "./golang/golang-echo",
     "./golang/golang-fiber",
     "./golang/golang-nethttp",
+    "./golang/golang-makefile",
+    "./golang/golang-app",
+    "./golang/golang-database",
     "./typescript/typescript-language",
-    "./typescript/typescript-best-practices"
+    "./typescript/typescript-best-practices",
+    "./typescript/typescript-tooling",
+    "./typescript/typescript-security",
+    "./python/python-language",
+    "./python/python-architecture",
+    "./python/python-error-handling",
+    "./python/python-logging",
+    "./python/python-testing",
+    "./python/python-async",
+    "./python/python-fastapi",
+    "./python/python-data",
+    "./python/python-cli",
+    "./frontend/react-language",
+    "./frontend/react-patterns",
+    "./frontend/react-forms",
+    "./frontend/react-state",
+    "./frontend/react-testing",
+    "./frontend/angular-language",
+    "./frontend/angular-services",
+    "./frontend/angular-forms",
+    "./frontend/angular-testing",
+    "./frontend/nextjs-app-router",
+    "./frontend/nextjs-data",
+    "./frontend/nextjs-api",
+    "./frontend/cypress-e2e",
+    "./nodejs/nestjs-architecture",
+    "./nodejs/nestjs-guards",
+    "./nodejs/nestjs-testing",
+    "./nodejs/nestjs-database"
   ]
 }

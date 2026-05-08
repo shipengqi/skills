@@ -1,0 +1,37 @@
+{
+  "skill_name": "nextjs-api",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I create a REST API endpoint in Next.js App Router?",
+      "expected_output": "Create app/api/users/route.ts and export named functions GET, POST, etc. Use NextRequest and NextResponse. Parse the request body with await req.json(), validate with Zod safeParse, and return NextResponse.json(data, { status: 201 }). For dynamic segments, add [id]/route.ts and receive params as a Promise<{ id: string }> in the second argument.",
+      "assertions": [
+        { "type": "contains", "value": "NextResponse" },
+        { "type": "contains", "value": "route.ts" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I redirect unauthenticated users at the edge in Next.js?",
+      "expected_output": "Use middleware.ts at the project root. Export a middleware function that reads cookies or headers, then returns NextResponse.redirect(new URL('/login', request.url)) for protected paths. Export a config object with a matcher array to limit which paths trigger the middleware. Keep middleware lightweight — no database calls, it runs at the Edge.",
+      "assertions": [
+        { "type": "contains", "value": "middleware.ts" },
+        { "type": "contains", "value": "matcher" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I access environment variables safely in Next.js?",
+      "expected_output": "Only NEXT_PUBLIC_ prefixed variables are exposed to the browser — everything else is server-only. Use @t3-oss/env-nextjs with Zod to validate env vars at startup: createEnv({ server: { DATABASE_URL: z.string().url() }, client: { NEXT_PUBLIC_API_URL: z.string() }, runtimeEnv: process.env }). This catches missing env vars at build time with type safety.",
+      "assertions": [
+        { "type": "contains", "value": "NEXT_PUBLIC_" },
+        { "type": "contains", "value": "server-only" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I write a route handler in NestJS with controllers?",
+    "Configure Angular HTTP interceptors for request headers",
+    "Set up React Router for client-side routing"
+  ]
+}

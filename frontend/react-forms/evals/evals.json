@@ -1,0 +1,37 @@
+{
+  "skill_name": "react-forms",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I add Zod validation to a React form?",
+      "expected_output": "Use react-hook-form with zodResolver. Define a z.object() schema, derive the TypeScript type with z.infer<typeof schema>, then pass { resolver: zodResolver(schema) } to useForm. Field errors come back in formState.errors and map directly to your schema field names.",
+      "assertions": [
+        { "type": "contains", "value": "zodResolver" },
+        { "type": "contains", "value": "z.infer" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm using a custom Select component that doesn't accept a ref. How do I integrate it with react-hook-form?",
+      "expected_output": "Use the Controller component from react-hook-form. It takes name, control, and a render prop that provides field (value, onChange, onBlur) and fieldState (error). Pass field.value and field.onChange to your custom component. Use Controller whenever a UI library component doesn't forward refs.",
+      "assertions": [
+        { "type": "contains", "value": "Controller" },
+        { "type": "contains", "value": "field" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I show server-side validation errors on specific form fields in react-hook-form?",
+      "expected_output": "Call setError() from useForm after the server responds with field-level errors. Use setError('fieldName', { message: '...' }) for field errors and setError('root', { message: '...' }) for global form errors. This maps server errors back to the correct field in formState.errors.",
+      "assertions": [
+        { "type": "contains", "value": "setError" },
+        { "type": "contains", "value": "root" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I use Angular Reactive Forms with typed FormGroup?",
+    "Set up TanStack Query for server state in React",
+    "Configure Vitest with React Testing Library"
+  ]
+}

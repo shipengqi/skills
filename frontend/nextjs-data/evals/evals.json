@@ -1,0 +1,37 @@
+{
+  "skill_name": "nextjs-data",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I mutate data and refresh the page in Next.js App Router?",
+      "expected_output": "Use Server Actions. Mark the function with 'use server', perform the database operation, then call revalidatePath('/posts') to invalidate the cache. Use it as a form action: <form action={createPost}> — works without JavaScript. For programmatic mutations with error handling, use useActionState from React which gives you state, action, and isPending.",
+      "assertions": [
+        { "type": "contains", "value": "Server Actions" },
+        { "type": "contains", "value": "revalidatePath" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I control whether a Next.js fetch request is cached or always fresh?",
+      "expected_output": "Pass the cache option to fetch. Use cache: 'force-cache' for static data (build-time). Use cache: 'no-store' for dynamic data that must always be fresh. Use next: { revalidate: 60 } for ISR — revalidate every N seconds. Use next: { tags: ['posts'] } for tag-based revalidation, then call revalidateTag('posts') from a Server Action after a mutation.",
+      "assertions": [
+        { "type": "contains", "value": "no-store" },
+        { "type": "contains", "value": "revalidate" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Should I use next/image or a regular img tag in Next.js?",
+      "expected_output": "Always use next/image — it automatically serves modern formats (WebP/AVIF), lazy loads by default, prevents layout shift with reserved space, and optimises file size. Provide width and height props (or use fill with a positioned parent). Add priority to above-the-fold images to skip lazy loading. Plain <img> tags bypass all optimisations.",
+      "assertions": [
+        { "type": "contains", "value": "next/image" },
+        { "type": "contains", "value": "priority" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I set up TanStack Query with React for client-side data fetching?",
+    "Configure Angular HttpClient with caching interceptors",
+    "Set up Prisma with NestJS for database queries"
+  ]
+}

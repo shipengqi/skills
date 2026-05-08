@@ -17,6 +17,29 @@ metadata:
 
 # Go Architecture
 
+## Project Layout
+
+```
+project/
+├── cmd/                    # main packages (one dir per binary)
+│   └── apiserver/main.go
+├── configs/                # config files (yaml, toml)
+├── deployments/            # K8s, Docker, Helm charts
+├── docs/                   # generated API docs
+├── hack/                   # build scripts
+│   └── include/            # *.mk files included by root Makefile
+├── internal/               # private application code
+│   └── apiserver/
+│       ├── biz/            # business logic layer
+│       ├── handler/http/   # HTTP handlers
+│       ├── model/          # GORM models
+│       └── store/          # DB access layer
+├── pkg/                    # public importable libraries
+├── third_party/            # vendored non-Go assets
+├── Makefile                # thin dispatcher → hack/include/*.mk
+└── go.mod
+```
+
 ## Layer Structure
 
 ```
@@ -155,7 +178,7 @@ var ProviderSet = wire.NewSet(
 go generate ./internal/apiserver/...
 ```
 
-## Forbidden Dependencies
+## Anti-Patterns
 
 - ❌ `handler` imports anything from `store` directly
 - ❌ `biz` imports `handler` package

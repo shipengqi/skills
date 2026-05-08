@@ -1,0 +1,37 @@
+{
+  "skill_name": "typescript-security",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I safely validate user input at a TypeScript API endpoint?",
+      "expected_output": "Use Zod at the API boundary with safeParse(). Define a schema with z.object(), call safeParse(req.body), and return a 400 with result.error.flatten().fieldErrors if validation fails. Use safeParse (not parse) so you control the error response rather than letting a thrown exception propagate. The result.data is fully typed after the check.",
+      "assertions": [
+        { "type": "contains", "value": "safeParse" },
+        { "type": "contains", "value": "400" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Where should I store a JWT after login in a TypeScript web app?",
+      "expected_output": "Store JWTs in an HttpOnly Secure SameSite=Strict cookie — never in localStorage or sessionStorage, which are accessible to XSS. Set maxAge to a short expiry (15 minutes) and implement refresh token rotation for longer sessions. Use RS256 (asymmetric) rather than HS256 so you can verify tokens without sharing the signing secret.",
+      "assertions": [
+        { "type": "contains", "value": "HttpOnly" },
+        { "type": "contains", "value": "localStorage" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I prevent command injection when running shell commands in TypeScript?",
+      "expected_output": "Use execFileSync (or execFile/spawn) with a separate args array instead of a shell command string. execFileSync('git', ['clone', repoUrl]) — the array form never invokes a shell, so metacharacters in repoUrl are inert. Never interpolate user input into execSync template strings: execSync(`git clone ${repoUrl}`) is vulnerable to shell injection.",
+      "assertions": [
+        { "type": "contains", "value": "execFileSync" },
+        { "type": "contains", "value": "args" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I configure ESLint flat config for a TypeScript library project?",
+    "Write a Vitest test that mocks a module in TypeScript",
+    "How do I use discriminated unions to model loading states in TypeScript?"
+  ]
+}

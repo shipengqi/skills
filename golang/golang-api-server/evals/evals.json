@@ -1,0 +1,39 @@
+{
+  "skill_name": "golang-api-server",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I implement graceful shutdown in a Go HTTP server?",
+      "expected_output": "Implement a GracefulStop method on the server struct. Listen for os.Signal (SIGTERM, SIGINT) in a goroutine. Call server.Shutdown with a context.WithTimeout (e.g. 10 seconds). Never put signal handling in main() — it belongs in Run() on the server struct. Always set a shutdown timeout to avoid hanging indefinitely.",
+      "assertions": [
+        { "type": "contains", "value": "GracefulStop" },
+        { "type": "contains", "value": "context.WithTimeout" },
+        { "type": "contains", "value": "SIGTERM" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "What's the difference between /healthz and /readyz endpoints in a Go service?",
+      "expected_output": "healthz is a liveness probe — returns 200 if the process is alive, no dependency checks. readyz is a readiness probe — checks real dependencies (DB, cache, external services) before returning 200. Never make /readyz always return 200. Kubernetes uses readyz to decide whether to route traffic.",
+      "assertions": [
+        { "type": "contains", "value": "healthz" },
+        { "type": "contains", "value": "readyz" },
+        { "type": "contains", "value": "dependencies" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How should I structure the startup sequence of a Go HTTP server?",
+      "expected_output": "Initialize logger first, then config, then dependencies (DB, cache), then wire the service graph, finally start the server. Use a Config struct to pass all dependencies to the server. Call log.Init() and defer log.Sync() before anything else. Errors during startup should propagate up to main() which calls log.Fatalw.",
+      "assertions": [
+        { "type": "contains", "value": "Config" },
+        { "type": "contains", "value": "startup" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I define route groups with authentication middleware in Gin?",
+    "Write a gomock-based unit test for a biz layer method",
+    "How do I propagate errors across layers using errno sentinels?"
+  ]
+}

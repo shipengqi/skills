@@ -10,7 +10,7 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILLS_DIR="${HOME}/.claude/skills"
 
-# All available skills in order: <lang>/<skill-name>
+# All available skills in order: <category>/<skill-name>
 ALL_SKILLS=(
   golang/golang-language
   golang/golang-error-handling
@@ -22,8 +22,39 @@ ALL_SKILLS=(
   golang/golang-echo
   golang/golang-fiber
   golang/golang-nethttp
+  golang/golang-makefile
+  golang/golang-app
+  golang/golang-database
   typescript/typescript-language
   typescript/typescript-best-practices
+  typescript/typescript-tooling
+  typescript/typescript-security
+  python/python-language
+  python/python-architecture
+  python/python-error-handling
+  python/python-logging
+  python/python-testing
+  python/python-async
+  python/python-fastapi
+  python/python-data
+  python/python-cli
+  frontend/react-language
+  frontend/react-patterns
+  frontend/react-forms
+  frontend/react-state
+  frontend/react-testing
+  frontend/angular-language
+  frontend/angular-services
+  frontend/angular-forms
+  frontend/angular-testing
+  frontend/nextjs-app-router
+  frontend/nextjs-data
+  frontend/nextjs-api
+  frontend/cypress-e2e
+  nodejs/nestjs-architecture
+  nodejs/nestjs-guards
+  nodejs/nestjs-testing
+  nodejs/nestjs-database
 )
 
 install_skill() {

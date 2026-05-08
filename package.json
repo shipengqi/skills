@@ -1,7 +1,10 @@
 {
   "name": "@shipengqi/claude-skills",
   "version": "0.1.0",
-  "description": "Engineering best-practice skills for Claude Code — Go and TypeScript",
+  "description": "Engineering best-practice skills for Claude Code — Go, TypeScript, and Python",
+  "scripts": {
+    "benchmark": "node bin/benchmark.js"
+  },
   "bin": {
     "claude-skills": "./bin/cli.js"
   },
@@ -9,9 +12,11 @@
     "bin/",
     "golang/",
     "typescript/",
+    "python/",
+    "metadata.json",
     ".claude-plugin/"
   ],
-  "keywords": ["claude", "claude-code", "skills", "golang", "typescript"],
+  "keywords": ["claude", "claude-code", "skills", "golang", "typescript", "python"],
   "author": "shipengqi",
   "license": "MIT",
   "homepage": "https://github.com/shipengqi/skills",
@@ -21,5 +26,6 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "type": "module"
 }

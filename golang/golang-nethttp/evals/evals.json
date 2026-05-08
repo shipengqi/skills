@@ -1,0 +1,39 @@
+{
+  "skill_name": "golang-nethttp",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I set up a Go HTTP server using the standard library with route grouping?",
+      "expected_output": "Use chi router instead of http.DefaultServeMux. Create chi.NewRouter(), register middleware with r.Use(), group routes with r.Route('/v1', func(r chi.Router) {...}). Never use http.DefaultServeMux — always create a named router. Mount sub-routers with r.Mount().",
+      "assertions": [
+        { "type": "contains", "value": "chi" },
+        { "type": "contains", "value": "DefaultServeMux" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I write middleware using net/http that injects a value into the request context?",
+      "expected_output": "Write a function that takes http.Handler and returns http.Handler. Call next.ServeHTTP(w, r.WithContext(ctx)) with the enriched context. Never write to w after calling next.ServeHTTP — headers are already sent. Use r.WithContext() to create a new request with the modified context.",
+      "assertions": [
+        { "type": "contains", "value": "ServeHTTP" },
+        { "type": "contains", "value": "r.WithContext" },
+        { "type": "contains", "value": "http.Handler" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What are the key differences between using net/http directly versus Gin or Echo?",
+      "expected_output": "net/http requires manual JSON decoding (json.NewDecoder), header setting (w.Header().Set), and status writing (w.WriteHeader). Always set Content-Type before writing body. Call w.WriteHeader() before w.Write() — implicit 200 is sent on first Write. Use chi for routing patterns, middleware composition, and URL parameter extraction via chi.URLParam(r, 'id').",
+      "assertions": [
+        { "type": "contains", "value": "json.NewDecoder" },
+        { "type": "contains", "value": "WriteHeader" },
+        { "type": "contains", "value": "chi" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I configure the Gin engine with custom recovery middleware?",
+    "Set up graceful shutdown with SIGTERM handling in a Go server",
+    "Write a mockgen directive for a Go store interface"
+  ]
+}

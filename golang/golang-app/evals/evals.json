@@ -1,0 +1,48 @@
+{
+  "evals": [
+    {
+      "input": "How do I structure the options for a Go cobra command so that both CLI flags and a config file work together?",
+      "expected_keywords": ["ServerOptions", "mapstructure", "AddFlags", "pflag", "viper.Unmarshal", "cobra.OnInitialize"],
+      "expected_concepts": [
+        "Options struct with json + mapstructure tags on every field",
+        "NewServerOptions() constructor with defaults",
+        "AddFlags method binding fields to pflag FlagSet",
+        "cobra.OnInitialize to defer viper config loading until after flag parsing",
+        "viper.Unmarshal(opts) in run() to merge config file + env vars into opts"
+      ],
+      "should_not_trigger": false
+    },
+    {
+      "input": "Why should I separate ServerOptions from a Config struct in a Go service?",
+      "expected_keywords": ["Options", "Config", "mapstructure", "constructors", "flag-bound"],
+      "expected_concepts": [
+        "Options are CLI-facing and viper-unmarshaled — carry mapstructure tags and flag names",
+        "Config is the internal runtime struct passed to server constructors — no flag concerns",
+        "opts.Config() converts validated Options into Config",
+        "Prevents leaking CLI flag names into core application code"
+      ],
+      "should_not_trigger": false
+    },
+    {
+      "input": "How do I compose sub-options (like HTTPOptions, MySQLOptions) into a parent ServerOptions in Go?",
+      "expected_keywords": ["AddFlags", "Validate", "utilerrors.NewAggregate", "delegate"],
+      "expected_concepts": [
+        "Embed *HTTPOptions as a pointer field with json + mapstructure tags",
+        "Parent AddFlags calls o.HTTPOptions.AddFlags(fs) to delegate flag registration",
+        "Parent Validate collects sub-option errors via errs = append(errs, o.HTTPOptions.Validate()...)",
+        "utilerrors.NewAggregate returns all validation errors at once"
+      ],
+      "should_not_trigger": false
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "input": "How do I structure my handler, biz, and store layers using Clean Architecture?",
+      "reason": "golang-architecture handles layer design and Wire DI"
+    },
+    {
+      "input": "How do I set up a Makefile for my Go project with version injection?",
+      "reason": "golang-makefile handles build system patterns"
+    }
+  ]
+}

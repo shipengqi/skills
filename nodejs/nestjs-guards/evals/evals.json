@@ -1,0 +1,37 @@
+{
+  "skill_name": "nestjs-guards",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I protect NestJS routes with JWT authentication?",
+      "expected_output": "Create a guard implementing CanActivate. In canActivate(), extract the token from the Authorization header (split(' ')[1]), verify it with JwtService.verify(), attach the payload to request['user'], and return true. Throw UnauthorizedException for missing or invalid tokens. Apply with @UseGuards(JwtAuthGuard) at controller or method level.",
+      "assertions": [
+        { "type": "contains", "value": "CanActivate" },
+        { "type": "contains", "value": "UnauthorizedException" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I automatically validate request bodies in NestJS?",
+      "expected_output": "Enable the global ValidationPipe in main.ts with whitelist: true and transform: true. Then decorate DTO class properties with class-validator decorators: @IsEmail(), @IsString(), @MinLength(8), @IsOptional(). The pipe validates incoming @Body() automatically and returns 400 with field error messages for invalid input. transform: true converts plain objects to DTO class instances.",
+      "assertions": [
+        { "type": "contains", "value": "class-validator" },
+        { "type": "contains", "value": "whitelist" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I return consistent error responses across all NestJS routes?",
+      "expected_output": "Create a global exception filter with @Catch(HttpException) implementing ExceptionFilter. In catch(), read exception.getStatus() and exception.getResponse(), then write a consistent JSON shape to the response. Register with app.useGlobalFilters(). Also add a catch-all @Catch() filter for unexpected errors that returns 500 — register it first (least specific filter first).",
+      "assertions": [
+        { "type": "contains", "value": "ExceptionFilter" },
+        { "type": "contains", "value": "@Catch" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I write an Angular route guard with CanActivateFn?",
+    "Set up Next.js middleware for authentication redirects",
+    "Configure React form validation with Zod"
+  ]
+}

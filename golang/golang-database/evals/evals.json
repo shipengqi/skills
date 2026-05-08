@@ -1,0 +1,50 @@
+{
+  "evals": [
+    {
+      "input": "How do I initialize a GORM database with proper connection pooling and a startup health check?",
+      "expected_keywords": ["SetMaxOpenConns", "SetMaxIdleConns", "SetConnMaxLifetime", "PingContext", "gorm.Open"],
+      "expected_concepts": [
+        "Call db.DB() to get the underlying *sql.DB for pool configuration",
+        "SetMaxOpenConns caps concurrent connections; default is unlimited",
+        "SetMaxIdleConns keeps connections alive to avoid reconnect overhead",
+        "SetConnMaxLifetime recycles connections before server-side timeout",
+        "PingContext with a short timeout verifies DB is reachable before serving traffic"
+      ],
+      "should_not_trigger": false
+    },
+    {
+      "input": "How do I implement a transaction that spans multiple store operations in a layered Go app?",
+      "expected_keywords": ["TX", "transactionKey", "context.WithValue", "IStore", "DB(ctx)"],
+      "expected_concepts": [
+        "TX(ctx, fn) wraps fn in a GORM transaction and injects tx into context via transactionKey",
+        "DB(ctx) extracts tx from context automatically — store methods stay transaction-unaware",
+        "Biz layer calls store.TX(ctx, func(ctx) error { ... }) to start a transaction",
+        "All store.DB(ctx) calls inside fn automatically use the same tx",
+        "Transaction commits on nil return, rolls back on error"
+      ],
+      "should_not_trigger": false
+    },
+    {
+      "input": "How should I structure the IStore interface and its datastore implementation in a Go project?",
+      "expected_keywords": ["IStore", "datastore", "NewStore", "sync.Once", "wire.Bind", "DB(ctx)", "TX(ctx)"],
+      "expected_concepts": [
+        "IStore aggregates all sub-store accessors (User(), Post()) plus DB() and TX() methods",
+        "datastore holds *gorm.DB as core field; NewStore uses sync.Once for singleton initialization",
+        "Wire ProviderSet binds *datastore to IStore interface for dependency injection",
+        "DB(ctx) accepts variadic where.Where for composable filtering and pagination",
+        "Expose IStore in biz constructors, not *datastore directly"
+      ],
+      "should_not_trigger": false
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "input": "How do I run database migrations in a Go project using golang-migrate?",
+      "reason": "Migration tooling is separate from DB client wrapping — out of scope for this skill"
+    },
+    {
+      "input": "How do I handle errors returned from database operations in my store layer?",
+      "reason": "golang-error-handling covers errno sentinel translation and layered error propagation"
+    }
+  ]
+}

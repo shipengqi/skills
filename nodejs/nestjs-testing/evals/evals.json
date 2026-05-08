@@ -1,0 +1,37 @@
+{
+  "skill_name": "nestjs-testing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I unit test a NestJS service that depends on PrismaService?",
+      "expected_output": "Use Test.createTestingModule({ providers: [UsersService, { provide: PrismaService, useValue: { user: { findUnique: jest.fn(), create: jest.fn() } } }] }).compile(). Get the service and mock with module.get(). Use prisma.user.findUnique.mockResolvedValue(mockData) to control what the mock returns. Test both success and error paths (e.g. when findUnique returns null, expect NotFoundException).",
+      "assertions": [
+        { "type": "contains", "value": "createTestingModule" },
+        { "type": "contains", "value": "mockResolvedValue" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I write an E2E test for a NestJS REST endpoint?",
+      "expected_output": "Use Test.createTestingModule({ imports: [AppModule] }).compile(), create the app with module.createNestApplication(), apply the same global pipes as production (app.useGlobalPipes(new ValidationPipe(...))), and call await app.init(). Use supertest: request(app.getHttpServer()).post('/users').send(dto).expect(201). Call app.close() in afterAll.",
+      "assertions": [
+        { "type": "contains", "value": "supertest" },
+        { "type": "contains", "value": "app.close" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I bypass authentication guards in NestJS E2E tests?",
+      "expected_output": "Use overrideGuard() in the test module builder: Test.createTestingModule({ imports: [AppModule] }).overrideGuard(JwtAuthGuard).useValue({ canActivate: () => true }).compile(). This replaces the real guard with one that always returns true. Call this before .compile() — you can chain multiple overrideGuard() calls.",
+      "assertions": [
+        { "type": "contains", "value": "overrideGuard" },
+        { "type": "contains", "value": "canActivate" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I test an Angular service with HttpClientTestingModule?",
+    "Write a Vitest test for a React component with React Testing Library",
+    "Set up Jest for a pure TypeScript utility library"
+  ]
+}

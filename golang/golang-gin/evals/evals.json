@@ -1,0 +1,39 @@
+{
+  "skill_name": "golang-gin",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Should I use gin.Default() or gin.New() to create my Gin engine?",
+      "expected_output": "Always use gin.New(). gin.Default() adds Logger and Recovery middleware you can't customize. With gin.New() you register middleware explicitly in the correct order: Recovery first, then NoCache, CORS, Secure, RequestID. This gives full control over the middleware chain.",
+      "assertions": [
+        { "type": "contains", "value": "gin.New()" },
+        { "type": "contains", "value": "gin.Default()" },
+        { "type": "contains", "value": "middleware" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My Gin handler needs to call a biz method and return a JSON response. How should I structure this?",
+      "expected_output": "Use core.HandleJSONRequest for POST/PUT/PATCH (JSON body), HandleUriRequest for path params, HandleQueryRequest for query strings. Never call c.JSON() directly in handlers. The handle helpers bind the request, run validators, call the biz function, and write the response automatically.",
+      "assertions": [
+        { "type": "contains", "value": "HandleJSONRequest" },
+        { "type": "contains", "value": "c.JSON" },
+        { "type": "contains", "value": "WriteResponse" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I have auth middleware that validates a JWT. If the token is invalid, should I just return after writing the error response?",
+      "expected_output": "No. After writing the error response in middleware, always call c.Abort() to stop the middleware chain. Just returning without c.Abort() allows subsequent handlers to still execute. The correct pattern: WriteResponse(c, nil, errno.ErrTokenInvalid); c.Abort(); return.",
+      "assertions": [
+        { "type": "contains", "value": "c.Abort()" },
+        { "type": "contains", "value": "middleware" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I set up an Echo HTTP server with custom error handling?",
+    "Configure Zap structured logging with context propagation in Go",
+    "What's the correct Wire ProviderSet pattern for the biz layer?"
+  ]
+}

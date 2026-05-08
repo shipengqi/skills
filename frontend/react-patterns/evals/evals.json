@@ -1,0 +1,37 @@
+{
+  "skill_name": "react-patterns",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How should I organise a large React project's folder structure?",
+      "expected_output": "Use feature-based organisation from bulletproof-react: src/features/{name}/{components,hooks,api,types,index.ts}. Each feature exposes a public API through index.ts — never import from deep internal paths. Shared UI primitives go in src/components/, app-wide hooks in src/hooks/, third-party wrappers in src/lib/.",
+      "assertions": [
+        { "type": "contains", "value": "feature" },
+        { "type": "contains", "value": "index.ts" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My component has too many props. How do I avoid prop drilling?",
+      "expected_output": "First, co-locate state closer to where it's used — lift only when two components genuinely share it. For complex parent-child component APIs, use compound components: the parent provides context via React.createContext, child sub-components (Select.Option, etc.) consume it internally. For pure logic sharing, extract a custom hook.",
+      "assertions": [
+        { "type": "contains", "value": "compound" },
+        { "type": "contains", "value": "context" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Should I use render props or custom hooks for logic sharing in React?",
+      "expected_output": "Custom hooks — render props are mostly superseded by hooks. Use render props only when you need to inject rendering into a lifecycle boundary (e.g. a virtualised list's renderItem). For all logic sharing (data fetching, form state, timers), extract a custom hook starting with 'use'.",
+      "assertions": [
+        { "type": "contains", "value": "custom hook" },
+        { "type": "contains", "value": "render props" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I set up react-hook-form with Zod validation?",
+    "Configure Next.js App Router with Server Components",
+    "Write a NestJS guard for JWT authentication"
+  ]
+}

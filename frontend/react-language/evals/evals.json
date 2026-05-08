@@ -1,0 +1,37 @@
+{
+  "skill_name": "react-language",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Why is calling useState inside an if statement wrong in React?",
+      "expected_output": "It violates the Rules of Hooks — hooks must be called in the same order on every render. Conditional hooks mean the hook call count changes between renders, causing React to lose track of which state belongs to which hook. Put the condition inside the component body after the hook call.",
+      "assertions": [
+        { "type": "contains", "value": "Rules of Hooks" },
+        { "type": "contains", "value": "order" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm syncing derived state with useEffect. Is there a better way?",
+      "expected_output": "Yes — compute it directly. useEffect for derived state creates a double-render and stale state bugs. If fullName = firstName + lastName, just write const fullName = `${firstName} ${lastName}` inline. Only use useEffect for side effects like data fetching or subscriptions, not for computing values from existing state.",
+      "assertions": [
+        { "type": "contains", "value": "compute" },
+        { "type": "contains", "value": "useEffect" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I share logic between multiple React components without duplicating code?",
+      "expected_output": "Extract it into a custom hook. A custom hook is a function starting with 'use' that contains useState, useEffect, or other hooks. The component becomes a pure UI layer — it calls the hook and renders the returned values. For example, useUsers() encapsulates fetching, loading state, and error handling, and any component can call it.",
+      "assertions": [
+        { "type": "contains", "value": "custom hook" },
+        { "type": "contains", "value": "use" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I set up Zustand store with actions for global state?",
+    "Configure Angular standalone components with Signals",
+    "Set up a NestJS module with Prisma database integration"
+  ]
+}

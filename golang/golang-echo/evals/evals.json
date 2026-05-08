@@ -1,0 +1,37 @@
+{
+  "skill_name": "golang-echo",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I handle errors uniformly across all Echo routes without repeating error logic?",
+      "expected_output": "Register a custom HTTPErrorHandler on the Echo instance. The handler checks if the error is an *errorsx.ErrorX (errno sentinel) and writes the appropriate JSON response. For unknown errors it returns 500. This replaces per-handler try/catch patterns and ensures consistent error format.",
+      "assertions": [
+        { "type": "contains", "value": "HTTPErrorHandler" },
+        { "type": "contains", "value": "ErrorX" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How does context propagation work in Echo compared to Gin?",
+      "expected_output": "Echo uses echo.Context which wraps the standard library request. Pass c.Request().Context() to biz/store layers, never c itself. Echo's context is not the same as context.Context. Key difference from Gin: Echo returns errors from handlers instead of writing responses directly.",
+      "assertions": [
+        { "type": "contains", "value": "c.Request().Context()" },
+        { "type": "contains", "value": "echo.Context" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What are the key differences between Echo and Gin I should know?",
+      "expected_output": "Echo handlers return error instead of writing responses directly. Use writeError(c, err) helper for error responses. Echo has built-in validator via e.Validator. Echo's binder uses c.Bind() — always check the returned error. Don't use c.Echo().Logger for application logging, use the project's Zap logger.",
+      "assertions": [
+        { "type": "contains", "value": "return error" },
+        { "type": "contains", "value": "Gin" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I set up route groups with auth middleware in Gin?",
+    "Write a gomock-based unit test for a Go service",
+    "Configure Wire dependency injection for a Go API server"
+  ]
+}

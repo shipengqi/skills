@@ -1,0 +1,38 @@
+{
+  "skill_name": "cypress-e2e",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How should I select elements in Cypress tests?",
+      "expected_output": "Use data-cy attributes on HTML elements (e.g. data-cy=\"submit-btn\") and select them with cy.get('[data-cy=\"submit-btn\"]') or a dataCy custom command. Avoid class selectors (.btn-primary) and ID selectors (#submit) — they are fragile and break on CSS refactors or HTML changes. data-cy attributes are dedicated to testing and don't change with styling.",
+      "assertions": [
+        { "type": "contains", "value": "data-cy" },
+        { "type": "contains", "value": "cy.get" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I stub an API response in Cypress and verify the UI reacts correctly?",
+      "expected_output": "Use cy.intercept() before cy.visit() to stub the response, give it an alias with .as('alias'), then use cy.wait('@alias') after the action to ensure the request was made before asserting. Example: cy.intercept('GET', '/api/users', { fixture: 'users.json' }).as('getUsers'); cy.visit('/users'); cy.wait('@getUsers'); cy.dataCy('user-list').children().should('have.length', 3).",
+      "assertions": [
+        { "type": "contains", "value": "cy.intercept" },
+        { "type": "contains", "value": "cy.wait('@" },
+        { "type": "contains", "value": "fixture" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I avoid repeating login steps across Cypress tests?",
+      "expected_output": "Create a login Custom Command in cypress/support/commands.ts using cy.session() to cache the authenticated state. cy.session() caches cookies and localStorage so subsequent tests reuse the session without re-running the login flow. Define the command with Cypress.Commands.add('login', (email, password) => { cy.session([email, password], () => { ... }) }) and declare the type in cypress/support/index.d.ts.",
+      "assertions": [
+        { "type": "contains", "value": "cy.session" },
+        { "type": "contains", "value": "Cypress.Commands.add" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "Write a Vitest unit test for a React component that fetches user data",
+    "How do I configure ESLint for a TypeScript project?",
+    "Set up MSW mock handlers for a React Testing Library test"
+  ]
+}

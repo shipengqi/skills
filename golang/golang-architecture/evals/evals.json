@@ -1,0 +1,40 @@
+{
+  "skill_name": "golang-architecture",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm structuring a new Go service. What are the main layers and what goes in each?",
+      "expected_output": "Use four layers: handler (parse request, call biz, write response), biz (business rules, no DB access), store (GORM/DB operations only), model (pure data structs). Dependency direction is handler → biz → store → model. Each layer depends only on the layer below's interface, never on the concrete type.",
+      "assertions": [
+        { "type": "contains", "value": "handler" },
+        { "type": "contains", "value": "biz" },
+        { "type": "contains", "value": "store" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I wire dependencies in a Go service without passing everything through main()?",
+      "expected_output": "Use Google Wire. Define a ProviderSet per layer (biz.ProviderSet, store.ProviderSet). Write an injector function in wire.go with the wireinject build tag. Wire generates wire_gen.go automatically. Never edit wire_gen.go by hand.",
+      "assertions": [
+        { "type": "contains", "value": "Wire" },
+        { "type": "contains", "value": "ProviderSet" },
+        { "type": "contains", "value": "wire_gen" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My Go handler is calling the database directly. What's wrong with this?",
+      "expected_output": "Handler should never import store or DB packages directly. Business logic belongs in the biz layer, DB access in the store layer. Handler holds only biz.IBiz and a validator. All logic goes through the biz interface. Forbidden: handler importing store, biz importing handler, store importing biz.",
+      "assertions": [
+        { "type": "contains", "value": "biz" },
+        { "type": "contains", "value": "interface" },
+        { "type": "contains", "value": "handler" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I write idiomatic Go error sentinels in the errno package?",
+    "Configure Zap structured logging with request context",
+    "Write a parametrized table-driven test in Go"
+  ]
+}

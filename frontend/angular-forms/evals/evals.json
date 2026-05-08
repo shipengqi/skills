@@ -1,0 +1,37 @@
+{
+  "skill_name": "angular-forms",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I build a typed reactive form in Angular 17?",
+      "expected_output": "Use FormBuilder.nonNullable.group() to create a group where reset() returns to initial values (not null). Provide validators in the array: ['', [Validators.required, Validators.email]]. The resulting form.getRawValue() type is inferred — always use getRawValue() (not form.value) to include disabled controls. Import ReactiveFormsModule in the standalone component.",
+      "assertions": [
+        { "type": "contains", "value": "getRawValue" },
+        { "type": "contains", "value": "nonNullable" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I show a validation error message for an email field in an Angular template?",
+      "expected_output": "Use @if with hasError() and touched check: @if (form.controls.email.hasError('email') && form.controls.email.touched). The touched guard prevents showing errors before the user interacts. Access specific errors with hasError('required'), hasError('email'), hasError('minlength'). Add role='alert' to the error span for accessibility.",
+      "assertions": [
+        { "type": "contains", "value": "hasError" },
+        { "type": "contains", "value": "touched" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I add and remove dynamic fields in an Angular form?",
+      "expected_output": "Use FormArray with useFieldArray. Call this.fb.array([]) to create it. Add fields with array.push(this.fb.control('', Validators.required)). Remove with array.removeAt(index). In the template, use formArrayName='tags' and bind each item with [formControlName]='i'. Access the array via form.controls.tags or a getter.",
+      "assertions": [
+        { "type": "contains", "value": "FormArray" },
+        { "type": "contains", "value": "formArrayName" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I use react-hook-form with Zod validation?",
+    "Set up form state management with Zustand in React",
+    "Write a NestJS DTO with class-validator decorators"
+  ]
+}

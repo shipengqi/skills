@@ -1,0 +1,37 @@
+{
+  "skill_name": "angular-testing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I test a standalone Angular 17 component with a signal input?",
+      "expected_output": "Import the component directly in TestBed.configureTestingModule({ imports: [UserCardComponent] }) — no module declaration needed for standalone. Set signal inputs with fixture.componentRef.setInput('user', mockUser). Always call fixture.detectChanges() after setting inputs or changing state to trigger template updates. Then query the DOM with fixture.nativeElement.",
+      "assertions": [
+        { "type": "contains", "value": "setInput" },
+        { "type": "contains", "value": "detectChanges" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I test an Angular service that makes HTTP calls?",
+      "expected_output": "Use provideHttpClientTesting() in the test providers. Inject HttpTestingController. After calling the service method, use httpTesting.expectOne('/api/url') to get the pending request, then call req.flush(mockData) to respond. Always call httpTesting.verify() in afterEach to assert no outstanding requests were left unhandled.",
+      "assertions": [
+        { "type": "contains", "value": "HttpTestingController" },
+        { "type": "contains", "value": "verify" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I test a functional Angular route guard?",
+      "expected_output": "Use TestBed.runInInjectionContext(() => authGuard(route, state)) to call a functional guard — it needs an injection context since it uses inject() internally. Provide mock values via { provide: AuthStore, useValue: { isAuthenticated: signal(false) } }. The result is either true or a UrlTree — check for UrlTree to verify the redirect.",
+      "assertions": [
+        { "type": "contains", "value": "runInInjectionContext" },
+        { "type": "contains", "value": "UrlTree" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I test a React component with React Testing Library?",
+    "Write a NestJS E2E test with supertest",
+    "Configure Vitest for a Next.js project"
+  ]
+}

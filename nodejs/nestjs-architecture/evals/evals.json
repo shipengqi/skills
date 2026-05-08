@@ -1,0 +1,37 @@
+{
+  "skill_name": "nestjs-architecture",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I structure a feature module in NestJS?",
+      "expected_output": "Create a directory with the feature name containing: feature.module.ts (imports, controllers, providers, exports), feature.controller.ts (HTTP routing only), feature.service.ts (business logic), dto/ directory (CreateDto, UpdateDto with class-validator), entities/ directory. The module exports only what other modules need via the exports array. Import the feature module in AppModule.",
+      "assertions": [
+        { "type": "contains", "value": "module" },
+        { "type": "contains", "value": "exports" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "What goes in a NestJS controller vs a service?",
+      "expected_output": "Controllers handle HTTP concerns only: routing (@Get, @Post), extracting params (@Param, @Body, @Query), setting status codes (@HttpCode), and calling services. No business logic in controllers. Services contain all business logic: database queries, validation rules, error throwing (NotFoundException, ConflictException). Controllers are thin HTTP adapters; services are the application core.",
+      "assertions": [
+        { "type": "contains", "value": "controller" },
+        { "type": "contains", "value": "business logic" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I configure the NestJS app at startup — pipes, prefix, port?",
+      "expected_output": "In main.ts after NestFactory.create(AppModule): call app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true, forbidNonWhitelisted: true })) for automatic DTO validation. Call app.setGlobalPrefix('api/v1') for a URL prefix. Call await app.listen(process.env.PORT ?? 3000). The ValidationPipe whitelist option strips unknown properties from request bodies.",
+      "assertions": [
+        { "type": "contains", "value": "ValidationPipe" },
+        { "type": "contains", "value": "whitelist" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I set up dependency injection in Angular services?",
+    "Configure Express middleware for a Node.js API",
+    "Set up Next.js Route Handlers with authentication"
+  ]
+}

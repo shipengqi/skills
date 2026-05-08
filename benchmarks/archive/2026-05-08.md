@@ -1,0 +1,86 @@
+# Benchmark Report — 2026-05-08
+
+## golang
+
+| Skill | Tokens | Light cost | Heavy cost | Quality/10 | Eval align |
+|-------|-------:|:----------:|:----------:|:----------:|:----------:|
+| golang-language | 767 | $0.006648 | $0.013269 | 8/10 | 71% |
+| golang-architecture | 1364 | $0.008439 | $0.015060 | 8/10 | 100% |
+| golang-error-handling | 983 | $0.007296 | $0.013917 | 8/10 | 100% |
+| golang-logging | 1047 | $0.007488 | $0.014109 | 8/10 | 100% |
+| golang-testing | 757 | $0.006618 | $0.013239 | 10/10 | 100% |
+| golang-api-server | 1181 | $0.007890 | $0.014511 | 8/10 | 100% |
+| golang-gin | 1362 | $0.008433 | $0.015054 | 8/10 | 100% |
+| golang-echo | 1508 | $0.008871 | $0.015492 | 8/10 | 83% |
+| golang-fiber | 1546 | $0.008985 | $0.015606 | 8/10 | 100% |
+| golang-nethttp | 1571 | $0.009060 | $0.015681 | 8/10 | 100% |
+| golang-makefile | 685 | $0.006402 | $0.013023 | 10/10 | 100% |
+| golang-app | 869 | $0.006954 | $0.013575 | 10/10 | 100% |
+| golang-database | 775 | $0.006672 | $0.013293 | 10/10 | 100% |
+
+## typescript
+
+| Skill | Tokens | Light cost | Heavy cost | Quality/10 | Eval align |
+|-------|-------:|:----------:|:----------:|:----------:|:----------:|
+| typescript-language | 1523 | $0.008916 | $0.015537 | 8/10 | 67% |
+| typescript-best-practices | 1773 | $0.009666 | $0.016287 | 8/10 | 100% |
+| typescript-tooling | 653 | $0.006306 | $0.012927 | 10/10 | 100% |
+| typescript-security | 810 | $0.006777 | $0.013398 | 10/10 | 100% |
+
+## python
+
+| Skill | Tokens | Light cost | Heavy cost | Quality/10 | Eval align |
+|-------|-------:|:----------:|:----------:|:----------:|:----------:|
+| python-language | 948 | $0.007191 | $0.013812 | 8/10 | 86% |
+| python-architecture | 1367 | $0.008448 | $0.015069 | 8/10 | 100% |
+| python-error-handling | 1112 | $0.007683 | $0.014304 | 8/10 | 88% |
+| python-logging | 942 | $0.007173 | $0.013794 | 8/10 | 100% |
+| python-testing | 1289 | $0.008214 | $0.014835 | 8/10 | 100% |
+| python-async | 1114 | $0.007689 | $0.014310 | 8/10 | 100% |
+| python-fastapi | 1735 | $0.009552 | $0.016173 | 8/10 | 75% |
+| python-data | 1120 | $0.007707 | $0.014328 | 8/10 | 86% |
+| python-cli | 1350 | $0.008397 | $0.015018 | 8/10 | 100% |
+
+## frontend
+
+| Skill | Tokens | Light cost | Heavy cost | Quality/10 | Eval align |
+|-------|-------:|:----------:|:----------:|:----------:|:----------:|
+| react-language | 1093 | $0.007626 | $0.014247 | 8/10 | 100% |
+| react-patterns | 1247 | $0.008088 | $0.014709 | 8/10 | 100% |
+| react-forms | 1187 | $0.007908 | $0.014529 | 8/10 | 100% |
+| react-state | 1123 | $0.007716 | $0.014337 | 8/10 | 100% |
+| react-testing | 1178 | $0.007881 | $0.014502 | 8/10 | 100% |
+| angular-language | 1120 | $0.007707 | $0.014328 | 8/10 | 100% |
+| angular-services | 1204 | $0.007959 | $0.014580 | 8/10 | 100% |
+| angular-forms | 1208 | $0.007971 | $0.014592 | 8/10 | 100% |
+| angular-testing | 1364 | $0.008439 | $0.015060 | 8/10 | 100% |
+| nextjs-app-router | 1326 | $0.008325 | $0.014946 | 8/10 | 100% |
+| nextjs-data | 1286 | $0.008205 | $0.014826 | 8/10 | 100% |
+| nextjs-api | 1390 | $0.008517 | $0.015138 | 8/10 | 100% |
+| cypress-e2e | 757 | $0.006618 | $0.013239 | 10/10 | 100% |
+
+## nodejs
+
+| Skill | Tokens | Light cost | Heavy cost | Quality/10 | Eval align |
+|-------|-------:|:----------:|:----------:|:----------:|:----------:|
+| nestjs-architecture | 1264 | $0.008139 | $0.014760 | 8/10 | 100% |
+| nestjs-guards | 1605 | $0.009162 | $0.015783 | 8/10 | 100% |
+| nestjs-testing | 1516 | $0.008895 | $0.015516 | 8/10 | 100% |
+| nestjs-database | 1458 | $0.008721 | $0.015342 | 8/10 | 100% |
+
+## Cost per invocation (all skills loaded)
+
+| Model | USD/1M tokens | Light session | Heavy session |
+|-------|:-------------:|:-------------:|:-------------:|
+| Gemini 2.0 Flash | $0.5 | $0.026463 | $0.027567 |
+| GPT-4o mini | $0.6 | $0.031756 | $0.033080 |
+| Claude Haiku 4.5 | $0.8 | $0.042341 | $0.044106 |
+| Claude Sonnet 4.5 | $3 | $0.158778 | $0.165399 |
+
+## Summary
+
+- **Total skills**: 43
+- **Skills with evals**: 43 / 43
+- **Average quality score**: 8.3 / 10
+- **Average eval alignment**: 97%
+- **Total tokens (all skills)**: 51477

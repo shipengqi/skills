@@ -1,0 +1,37 @@
+{
+  "skill_name": "typescript-tooling",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How should I suppress a TypeScript error I know is safe?",
+      "expected_output": "Use @ts-expect-error (not @ts-ignore) with a comment explaining why. @ts-expect-error is self-documenting and fails at build time if the error later disappears, preventing stale suppressions. @ts-ignore silently ignores the error forever with no feedback when it's no longer needed.",
+      "assertions": [
+        { "type": "contains", "value": "@ts-expect-error" },
+        { "type": "contains", "value": "@ts-ignore" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My TypeScript bundler builds fine but I have hidden type errors. What am I missing?",
+      "expected_output": "Bundlers like esbuild, tsup, and Vite skip type-checking — they only transpile. Always run tsc --noEmit in CI as a separate step to catch type errors. Add a type-check script to package.json and include it in your CI pipeline before the build step.",
+      "assertions": [
+        { "type": "contains", "value": "tsc --noEmit" },
+        { "type": "contains", "value": "CI" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I set up pre-commit linting for a TypeScript project?",
+      "expected_output": "Use lint-staged with Husky. Add lint-staged config to package.json mapping *.ts/*.tsx to eslint --fix and prettier --write. Create .husky/pre-commit to run npx lint-staged && npm run type-check. Install with: npx husky init. This ensures only staged files are linted rather than the whole project.",
+      "assertions": [
+        { "type": "contains", "value": "lint-staged" },
+        { "type": "contains", "value": "husky" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "Write a Vitest test for an async TypeScript service that throws NotFoundError",
+    "How do I use discriminated unions to model API responses in TypeScript?",
+    "Configure a Python FastAPI project with ruff and pyright"
+  ]
+}

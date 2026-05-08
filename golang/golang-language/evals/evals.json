@@ -1,0 +1,38 @@
+{
+  "skill_name": "golang-language",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "What's the idiomatic way to define a set of related constants in Go?",
+      "expected_output": "Use iota inside a const block for type-safe enumerations. Define a named type (e.g. type Status int), then declare constants with iota. Add a String() method for human-readable output.",
+      "assertions": [
+        { "type": "contains", "value": "iota" },
+        { "type": "contains", "value": "const" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Should I name my Go accessor method GetUser() or User()?",
+      "expected_output": "Use User(), not GetUser(). Go convention omits the Get prefix for accessors. Functions returning a value are named after what they return. Only use Get when it's a method on a struct and the name is ambiguous.",
+      "assertions": [
+        { "type": "contains", "value": "Get" },
+        { "type": "contains", "value": "convention" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What are the main anti-patterns to avoid in Go code?",
+      "expected_output": "Avoid init() — use constructors like NewXxx(). Avoid global mutable variables — inject via Wire/constructors. Avoid panic — return errors. Never ignore errors with _ = f(). Avoid empty interface any parameters — use concrete types. Avoid package-name stuttering like log.LogError.",
+      "assertions": [
+        { "type": "contains", "value": "init" },
+        { "type": "contains", "value": "panic" },
+        { "type": "contains", "value": "global" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I set up a Gin router with authentication middleware?",
+    "Write a table-driven test for a Go HTTP handler",
+    "Configure structured logging with Zap in a Go service"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "skill_name": "angular-services",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I add a JWT Authorization header to all HTTP requests in Angular 17?",
+      "expected_output": "Write a functional interceptor using HttpInterceptorFn. Inject AuthStore inside it with inject(), read the token signal, and clone the request with req.clone({ headers: req.headers.set('Authorization', `Bearer ${token}`) }). Register it in app.config.ts via provideHttpClient(withInterceptors([authInterceptor])). Functional interceptors replace the old class-based HttpInterceptor.",
+      "assertions": [
+        { "type": "contains", "value": "HttpInterceptorFn" },
+        { "type": "contains", "value": "withInterceptors" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I redirect unauthenticated users to the login page in Angular 17?",
+      "expected_output": "Write a functional guard using CanActivateFn. Inside it, inject AuthStore and Router. If authenticated, return true. Otherwise return router.createUrlTree(['/login'], { queryParams: { returnUrl: state.url } }). Register it in the route config with canActivate: [authGuard]. Functional guards replace class-based CanActivate.",
+      "assertions": [
+        { "type": "contains", "value": "CanActivateFn" },
+        { "type": "contains", "value": "createUrlTree" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Should I use providedIn: 'root' or declare my service in a module's providers array?",
+      "expected_output": "Use providedIn: 'root' — it creates a singleton that's tree-shakeable (removed from bundle if unused). Declaring in a module's providers array creates a new instance per module and is not tree-shakeable. Only use feature-scoped providers when the service must not be shared across the app or needs to be instantiated per lazy-loaded module.",
+      "assertions": [
+        { "type": "contains", "value": "providedIn" },
+        { "type": "contains", "value": "tree-shakeable" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I write an HTTP interceptor in NestJS?",
+    "Set up React Query for data fetching in a React app",
+    "Configure Next.js middleware for authentication"
+  ]
+}

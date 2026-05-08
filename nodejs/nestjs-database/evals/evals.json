@@ -1,0 +1,37 @@
+{
+  "skill_name": "nestjs-database",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I set up Prisma in a NestJS application?",
+      "expected_output": "Create PrismaService extending PrismaClient and implementing OnModuleInit — call await this.$connect() in onModuleInit. Decorate with @Injectable(). Create a @Global() PrismaModule that provides and exports PrismaService. Import PrismaModule in AppModule. Inject PrismaService via constructor in any service that needs database access.",
+      "assertions": [
+        { "type": "contains", "value": "PrismaClient" },
+        { "type": "contains", "value": "OnModuleInit" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How do I run multiple Prisma operations atomically so they all succeed or all fail?",
+      "expected_output": "Use prisma.$transaction(). For independent operations, pass an array: prisma.$transaction([op1, op2]). For operations that depend on each other (conditional logic), use the interactive form: prisma.$transaction(async (tx) => { ... }) — use tx instead of prisma inside the callback. Any thrown error rolls back all operations in the transaction.",
+      "assertions": [
+        { "type": "contains", "value": "$transaction" },
+        { "type": "contains", "value": "rollback" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I run Prisma migrations in production?",
+      "expected_output": "Use npx prisma migrate deploy — it applies pending migrations without prompting, safe for CI/CD and production. Never use prisma migrate dev in production — it resets and recreates the database. Run prisma generate after schema changes to regenerate the client. Commit the prisma/migrations/ directory to git — never edit migration files after they are applied.",
+      "assertions": [
+        { "type": "contains", "value": "migrate deploy" },
+        { "type": "contains", "value": "migrations" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I use TypeORM with an Express application?",
+    "Set up SQLAlchemy async sessions in a FastAPI service",
+    "Configure Prisma with a Next.js Server Actions workflow"
+  ]
+}

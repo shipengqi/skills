@@ -1,0 +1,38 @@
+{
+  "skill_name": "golang-fiber",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I pass request context to the biz layer in a Fiber handler?",
+      "expected_output": "Use c.UserContext() to get the standard context.Context from Fiber's context. Never pass c (fiber.Ctx) itself to biz or store layers. Inject user info by creating a derived context: ctx := contextx.WithUserID(c.UserContext(), userID) and set it back with c.SetUserContext(ctx).",
+      "assertions": [
+        { "type": "contains", "value": "c.UserContext()" },
+        { "type": "contains", "value": "fiber.Ctx" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I wrote a Fiber middleware and it seems to keep executing even after I write an error response. What's wrong?",
+      "expected_output": "In Fiber, middleware must return c.Next() explicitly — just returning nil or nothing after writing a response will continue the chain. The correct error pattern: write the response, then return nil (Fiber stops on non-nil return). Unlike Gin, there's no c.Abort() — control flow is managed by return values.",
+      "assertions": [
+        { "type": "contains", "value": "return c.Next()" },
+        { "type": "contains", "value": "middleware" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What are the main differences between Fiber and Gin I need to know?",
+      "expected_output": "Fiber uses fasthttp under the hood, not net/http — standard http.Request and http.ResponseWriter are not available. Pass c.UserContext() to biz layers (not c itself). Always return c.Next() in middleware, not just return. Fiber's context is fiber.Ctx, which has different methods than gin.Context.",
+      "assertions": [
+        { "type": "contains", "value": "fasthttp" },
+        { "type": "contains", "value": "c.UserContext()" },
+        { "type": "contains", "value": "Gin" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I write a custom error handler for Echo?",
+    "Set up Wire providers for dependency injection in Go",
+    "Write a table-driven unit test with mockgen in Go"
+  ]
+}

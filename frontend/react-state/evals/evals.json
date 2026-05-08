@@ -1,0 +1,37 @@
+{
+  "skill_name": "react-state",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I create a global auth store in React without Redux?",
+      "expected_output": "Use Zustand. Call create<StoreType>((set) => ({ ... })) with your state and actions co-located. Keep actions inside the store definition — not scattered across components. Use selectors when reading: const user = useAuthStore(state => state.user) to avoid re-renders when unrelated state changes.",
+      "assertions": [
+        { "type": "contains", "value": "Zustand" },
+        { "type": "contains", "value": "selector" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Should I use useState or TanStack Query for data I fetch from an API?",
+      "expected_output": "TanStack Query — it handles caching, deduplication, background revalidation, loading and error states automatically. useState for server data means manual fetch logic, no deduplication, and stale data across components. Use useState only for local UI state (modal open, tab selection). TanStack Query sets staleTime to control how long data is considered fresh.",
+      "assertions": [
+        { "type": "contains", "value": "TanStack Query" },
+        { "type": "contains", "value": "staleTime" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I invalidate cached data after a mutation in TanStack Query?",
+      "expected_output": "Call queryClient.invalidateQueries({ queryKey: ['users'] }) in the mutation's onSuccess callback. This marks matching queries as stale and triggers a background refetch. For immediate optimistic updates, use onMutate to update the cache before the server responds, then roll back in onError if it fails.",
+      "assertions": [
+        { "type": "contains", "value": "invalidateQueries" },
+        { "type": "contains", "value": "onSuccess" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I use Angular Signals for component state?",
+    "Set up Next.js Server Actions for form mutations",
+    "Configure NestJS providers for dependency injection"
+  ]
+}

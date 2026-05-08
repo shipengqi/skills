@@ -1,0 +1,37 @@
+{
+  "skill_name": "react-testing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I test an async React component that fetches data on mount?",
+      "expected_output": "Mock the API with MSW — set up handlers in setupServer(), call server.listen() in beforeAll, server.resetHandlers() in afterEach. Use findBy* queries (not getBy*) since they wait for the DOM to update. findByRole, findByText return Promises that resolve when the element appears. Never use arbitrary setTimeout — findBy handles the async wait.",
+      "assertions": [
+        { "type": "contains", "value": "MSW" },
+        { "type": "contains", "value": "findBy" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "What's the difference between fireEvent and userEvent in React Testing Library?",
+      "expected_output": "Use userEvent — it simulates realistic browser interactions including focus, blur, keyboard events, and pointer events in the correct order. fireEvent dispatches a single synthetic event without side effects. userEvent.setup() returns a user instance; always await user.type(), user.click() etc. fireEvent is only useful for events userEvent doesn't support.",
+      "assertions": [
+        { "type": "contains", "value": "userEvent" },
+        { "type": "contains", "value": "fireEvent" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How should I query elements in React Testing Library tests?",
+      "expected_output": "Query by accessibility role first: getByRole('button', { name: 'Submit' }), getByLabelText('Email'). This tests what users actually perceive. Avoid getByTestId — it's an implementation detail. Priority order: getByRole > getByLabelText > getByText > getByTestId. Use screen.* imported from @testing-library/react, not the render return value.",
+      "assertions": [
+        { "type": "contains", "value": "getByRole" },
+        { "type": "contains", "value": "getByTestId" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I test an Angular component with TestBed and ComponentFixture?",
+    "Write a Jest unit test for a NestJS service",
+    "Set up Vitest for a pure TypeScript utility library"
+  ]
+}

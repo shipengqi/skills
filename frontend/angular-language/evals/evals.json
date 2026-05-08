@@ -1,0 +1,37 @@
+{
+  "skill_name": "angular-language",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I create a reactive counter in Angular 17 that updates the template automatically?",
+      "expected_output": "Use Signals. Create a writable signal: const count = signal(0). Update with count.update(v => v + 1). In the template, read it by calling count(). Computed signals derive from it: const doubled = computed(() => count() * 2). No manual change detection or subscriptions needed — the template re-renders only when the signal's value changes.",
+      "assertions": [
+        { "type": "contains", "value": "signal" },
+        { "type": "contains", "value": "computed" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm using *ngFor in my Angular template. Should I update this?",
+      "expected_output": "Yes — migrate to Angular 17+ @for control flow. Replace *ngFor=\"let item of items\" with @for (item of items; track item.id). The track expression is required and should use a stable unique field, not $index. @for also supports @empty for the empty-list case. The new syntax is more performant and doesn't require CommonModule import.",
+      "assertions": [
+        { "type": "contains", "value": "@for" },
+        { "type": "contains", "value": "track" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I inject a service into an Angular 17 component without constructor injection?",
+      "expected_output": "Use the inject() function in the class field initializer: private userService = inject(UserService). This is the preferred pattern in Angular 17+. inject() must be called during construction (field initializer or constructor), not inside lifecycle hooks or event handlers. It works with any Injectable token and is more concise than constructor injection.",
+      "assertions": [
+        { "type": "contains", "value": "inject()" },
+        { "type": "contains", "value": "field" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I use React hooks for component state management?",
+    "Set up Next.js App Router with Server Components",
+    "Configure NestJS dependency injection with modules"
+  ]
+}

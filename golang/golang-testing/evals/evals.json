@@ -1,0 +1,38 @@
+{
+  "skill_name": "golang-testing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How do I write a test for multiple input cases in a Go Ginkgo test suite?",
+      "expected_output": "Use DescribeTable with Entry rows. Define a DescribeTable block with a function signature matching your test inputs, then add Entry calls for each case. This replaces table-driven tests with t.Run — Ginkgo generates named specs per entry, reports individual failures, and integrates with the Ginkgo reporter.",
+      "assertions": [
+        { "type": "contains", "value": "DescribeTable" },
+        { "type": "contains", "value": "Entry" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My Go service depends on a store interface. How do I unit test the biz layer with Ginkgo?",
+      "expected_output": "Generate mocks with uber-go/mock using //go:generate mockgen directives in the interface file. In your Ginkgo Describe block, declare the mock and controller as var, initialize them in BeforeEach using gomock.NewController(GinkgoT()) — not t. GinkgoT() integrates mock failures with Ginkgo's failure reporter. Set expectations with EXPECT().Method().Return().",
+      "assertions": [
+        { "type": "contains", "value": "GinkgoT()" },
+        { "type": "contains", "value": "BeforeEach" },
+        { "type": "contains", "value": "EXPECT" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I set up global test fixtures (like a database connection) in a Ginkgo suite?",
+      "expected_output": "Use BeforeSuite and AfterSuite at the package level in your suite_test.go file. BeforeSuite runs once before all specs in the suite; AfterSuite runs once after. For per-test cleanup, use DeferCleanup inside an It or BeforeEach block — it runs after that node completes, similar to t.Cleanup but scoped to the Ginkgo node.",
+      "assertions": [
+        { "type": "contains", "value": "BeforeSuite" },
+        { "type": "contains", "value": "DeferCleanup" }
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How do I configure Zap logging with request context propagation in Go?",
+    "Set up Wire dependency injection providers in a Go service",
+    "Write a Vitest test that mocks a TypeScript module"
+  ]
+}

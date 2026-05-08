@@ -1,0 +1,111 @@
+{
+  "global": {
+    "author": "shipengqi",
+    "repository": "https://github.com/shipengqi/skills"
+  },
+  "categories": {
+    "golang": {
+      "version": "0.1.0",
+      "last_updated": "2026-05-08",
+      "skills": [
+        "golang-language",
+        "golang-architecture",
+        "golang-error-handling",
+        "golang-logging",
+        "golang-testing",
+        "golang-api-server",
+        "golang-gin",
+        "golang-echo",
+        "golang-fiber",
+        "golang-nethttp",
+        "golang-makefile",
+        "golang-app",
+        "golang-database"
+      ],
+      "token_metrics": {
+        "total_tokens": 12404,
+        "avg_tokens": 1240,
+        "avg_quality": 7.8,
+        "skills_with_evals": 13
+      }
+    },
+    "typescript": {
+      "version": "0.1.0",
+      "last_updated": "2026-05-08",
+      "skills": [
+        "typescript-language",
+        "typescript-best-practices",
+        "typescript-tooling",
+        "typescript-security"
+      ],
+      "token_metrics": {
+        "total_tokens": 4760,
+        "avg_tokens": 1190,
+        "avg_quality": 8.5,
+        "skills_with_evals": 4
+      }
+    },
+    "python": {
+      "version": "0.1.0",
+      "last_updated": "2026-05-08",
+      "skills": [
+        "python-language",
+        "python-architecture",
+        "python-error-handling",
+        "python-logging",
+        "python-testing",
+        "python-async",
+        "python-fastapi",
+        "python-data",
+        "python-cli"
+      ],
+      "token_metrics": {
+        "total_tokens": 10977,
+        "avg_tokens": 1220,
+        "avg_quality": 8,
+        "skills_with_evals": 9
+      }
+    },
+    "frontend": {
+      "version": "0.1.0",
+      "last_updated": "2026-05-08",
+      "skills": [
+        "react-language",
+        "react-patterns",
+        "react-forms",
+        "react-state",
+        "react-testing",
+        "angular-language",
+        "angular-services",
+        "angular-forms",
+        "angular-testing",
+        "nextjs-app-router",
+        "nextjs-data",
+        "nextjs-api",
+        "cypress-e2e"
+      ],
+      "token_metrics": {
+        "total_tokens": 14726,
+        "avg_tokens": 1227,
+        "avg_quality": 8,
+        "skills_with_evals": 13
+      }
+    },
+    "nodejs": {
+      "version": "0.1.0",
+      "last_updated": "2026-05-08",
+      "skills": [
+        "nestjs-architecture",
+        "nestjs-guards",
+        "nestjs-testing",
+        "nestjs-database"
+      ],
+      "token_metrics": {
+        "total_tokens": 5843,
+        "avg_tokens": 1461,
+        "avg_quality": 8,
+        "skills_with_evals": 4
+      }
+    }
+  }
+}
