@@ -1,6 +1,6 @@
 # Claude Code Skills
 
-Engineering best-practice skills for Claude Code — Go, TypeScript, Python, React, Angular, Next.js, and NestJS.
+Engineering best-practice skills for Claude Code — Go, TypeScript, Python, React, Angular, Next.js, NestJS, and Database (Redis, PostgreSQL).
 
 ## Skills
 
@@ -81,6 +81,13 @@ Engineering best-practice skills for Claude Code — Go, TypeScript, Python, Rea
 | `nestjs-guards` | Guards, Interceptors, ValidationPipe (class-validator), Exception Filters |
 | `nestjs-testing` | Test.createTestingModule(), mock providers, supertest E2E |
 | `nestjs-database` | Prisma integration, repository pattern, transactions, migrations |
+
+### Database
+
+| Skill | Description |
+|-------|-------------|
+| `database-redis` | Redis key design, caching patterns, data structures, distributed lock, rate limiter |
+| `database-postgres` | Schema design, indexing, transactions, zero-downtime migrations (Expand-Contract) |
 
 ## Install
 
