@@ -47,7 +47,7 @@ function costUSD(tokens, usdPerMToken) {
  *   bullets ≥3         (2 pts)
  *   Anti-Patterns sec  (2 pts)
  *   reference links    (2 pts)
- *   ≤100 lines         (2 pts)
+ *   ≤500 lines         (2 pts)
  *   eval coverage      (2 pts — passed in as param)
  *
  * @param {string} skill     SKILL.md content
@@ -64,7 +64,7 @@ function scoreQuality(skill, evalPts) {
 
   if (/\[.+\]\(.+\)/.test(skill)) score += 2;
 
-  if (lines.length <= 100) score += 2;
+  if (lines.length <= 500) score += 2;
 
   score += evalPts;
 

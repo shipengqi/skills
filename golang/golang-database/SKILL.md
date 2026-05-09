@@ -1,6 +1,6 @@
 ---
 name: golang-database
-description: GORM database client setup and store layer — connection pool config, IStore interface, context-based transaction propagation, concrete store implementation.
+description: GORM database client setup and store layer — connection pool config, IStore interface, context-based transaction propagation, concrete store implementation. Use when setting up Go database access, configuring MySQL/SQLite with GORM, implementing the store layer, or wiring repositories with Google Wire.
 metadata:
   triggers:
     files:
