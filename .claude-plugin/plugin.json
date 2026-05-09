@@ -55,6 +55,8 @@
     "./nodejs/nestjs-architecture",
     "./nodejs/nestjs-guards",
     "./nodejs/nestjs-testing",
-    "./nodejs/nestjs-database"
+    "./nodejs/nestjs-database",
+    "./database/database-redis",
+    "./database/database-postgres"
   ]
 }

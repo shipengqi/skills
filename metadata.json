@@ -106,6 +106,20 @@
         "avg_quality": 8,
         "skills_with_evals": 4
       }
+    },
+    "database": {
+      "version": "0.1.0",
+      "last_updated": "2026-05-09",
+      "skills": [
+        "database-redis",
+        "database-postgres"
+      ],
+      "token_metrics": {
+        "total_tokens": 2600,
+        "avg_tokens": 1300,
+        "avg_quality": 8,
+        "skills_with_evals": 2
+      }
     }
   }
 }

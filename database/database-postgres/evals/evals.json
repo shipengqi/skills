@@ -1,0 +1,51 @@
+{
+  "skill_name": "database-postgres",
+  "evals": [
+    {
+      "input": "Design a users table for a multi-tenant SaaS app. I need: user ID (auto-increment), email, display name, created timestamp, and a JSON column for user preferences.",
+      "expected_keywords": ["GENERATED ALWAYS AS IDENTITY", "BIGINT", "TIMESTAMPTZ", "JSONB", "TEXT"],
+      "expected_concepts": [
+        "BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY — not serial (legacy) and not plain INT (may overflow at 2B rows)",
+        "created_at TIMESTAMPTZ DEFAULT now() — always use timestamptz, not timestamp, to avoid timezone bugs",
+        "preferences JSONB — binary JSON is indexable with GIN; json type stores raw text and cannot be indexed",
+        "email TEXT NOT NULL with a UNIQUE constraint; TEXT is the native optimized string type, no length needed",
+        "Avoid ENUM for status fields — hard to add or remove values without table rewrites"
+      ],
+      "should_not_trigger": false
+    },
+    {
+      "input": "My query is slow: SELECT * FROM orders o JOIN users u ON o.user_id = u.id WHERE o.status = 'pending' AND o.created_at > now() - interval '7 days'. EXPLAIN shows Seq Scan on orders (5M rows). How do I add the right index?",
+      "expected_keywords": ["CREATE INDEX CONCURRENTLY", "partial", "INCLUDE", "EXPLAIN", "ANALYZE"],
+      "expected_concepts": [
+        "Seq Scan on 5M rows = missing or unused index on the filtered columns",
+        "Partial index if pending is a small subset: CREATE INDEX CONCURRENTLY idx ON orders (created_at) WHERE status = 'pending'",
+        "Composite index on (status, created_at) covers both filter predicates",
+        "Always use CREATE INDEX CONCURRENTLY on a live table — plain CREATE INDEX takes an exclusive write lock",
+        "Run EXPLAIN (ANALYZE, BUFFERS) to see actual row counts, heap fetches, and I/O"
+      ],
+      "should_not_trigger": false
+    },
+    {
+      "input": "I need to rename the column 'user_email' to 'email' in the orders table in production. There are millions of rows and the app cannot go offline. How do I do this safely?",
+      "expected_keywords": ["Expand-Contract", "CONCURRENTLY", "ADD COLUMN", "DROP COLUMN", "backfill"],
+      "expected_concepts": [
+        "Direct RENAME COLUMN is instant but breaks all code that references user_email — use Expand-Contract instead",
+        "Phase 1 (Expand): ADD COLUMN email TEXT, then UPDATE orders SET email = user_email to backfill",
+        "Phase 2: deploy new code that reads and writes the email column",
+        "Phase 3 (Contract): DROP COLUMN user_email once all app instances are updated",
+        "Never DROP and ADD the replacement in the same migration on a live table"
+      ],
+      "should_not_trigger": false
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "input": "How do I set up PostgreSQL streaming replication with a hot standby server?",
+      "reason": "Replication topology is infrastructure/ops concern; skill covers schema design, queries, and migrations"
+    },
+    {
+      "input": "How do I connect to PostgreSQL from Python using psycopg2 with a connection pool?",
+      "reason": "Client library connection setup is language-specific; skill covers SQL patterns and schema design"
+    }
+  ]
+}

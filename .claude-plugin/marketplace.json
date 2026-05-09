@@ -309,6 +309,20 @@
       "description": "Prisma integration, repository pattern, transactions, migrations",
       "category": "backend",
       "tags": ["nestjs", "nodejs", "prisma", "database"]
+    },
+    {
+      "name": "database-redis",
+      "source": "./database/database-redis",
+      "description": "Redis key design, data structure selection, caching patterns, distributed locks",
+      "category": "database",
+      "tags": ["redis", "cache", "distributed-lock", "pub/sub", "streams"]
+    },
+    {
+      "name": "database-postgres",
+      "source": "./database/database-postgres",
+      "description": "PostgreSQL schema design, indexing, transactions, zero-downtime migrations",
+      "category": "database",
+      "tags": ["postgresql", "postgres", "sql", "migration", "indexing", "rls"]
     }
   ]
 }

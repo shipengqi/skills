@@ -55,6 +55,8 @@ ALL_SKILLS=(
   nodejs/nestjs-guards
   nodejs/nestjs-testing
   nodejs/nestjs-database
+  database/database-redis
+  database/database-postgres
 )
 
 install_skill() {

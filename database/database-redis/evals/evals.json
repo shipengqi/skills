@@ -1,0 +1,47 @@
+{
+  "skill_name": "database-redis",
+  "evals": [
+    {
+      "input": "Review this Redis caching code: for key in redis.keys('user:*'): data = redis.get(key); process(data). Also, when I store user data I do: redis.set('user:42', json.dumps(user_dict)) with no expiry.",
+      "expected_keywords": ["SCAN", "UNLINK", "TTL", "EXPIRE", "Hash", "HSET"],
+      "expected_concepts": [
+        "KEYS * blocks the main Redis thread and is forbidden in production — replace with SCAN cursor iteration",
+        "Storing full JSON in a String loses per-field access — use Hash (HSET/HGET) for objects with multiple fields",
+        "Cache keys need TTL — use SET key value EX seconds or EXPIRE key seconds to prevent unbounded memory growth"
+      ],
+      "should_not_trigger": false
+    },
+    {
+      "input": "I'm building a shopping cart in Redis. Each cart belongs to a user, has item IDs and quantities, and should expire after 30 minutes of inactivity. What data structure and key design should I use?",
+      "expected_keywords": ["HSET", "HINCRBY", "EXPIRE", "Hash", "EX"],
+      "expected_concepts": [
+        "Use a Hash keyed as cart:{user_id} with item_id as field and quantity as value — gives per-item increment and selective reads",
+        "HINCRBY cart:{user_id} {item_id} {qty} atomically updates quantity",
+        "Reset TTL on every read/write: EXPIRE cart:{user_id} 1800",
+        "Key naming: {service}:{entity}:{id} — e.g., store:cart:42"
+      ],
+      "should_not_trigger": false
+    },
+    {
+      "input": "How do I implement a Redis distributed lock so that if my process crashes while holding the lock, other processes can eventually acquire it?",
+      "expected_keywords": ["NX", "EX", "EVAL", "Lua", "UUID"],
+      "expected_concepts": [
+        "SET lock:{resource} {uuid} NX EX {seconds} — single atomic command; NX prevents overwrite, EX auto-releases on crash",
+        "Store a UUID as the value so only the lock owner can release it",
+        "Release with a Lua script that checks GET == uuid before DEL — prevents deleting another caller's lock",
+        "Two-step SETNX + EXPIRE is not atomic and has a crash window between commands"
+      ],
+      "should_not_trigger": false
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "input": "How do I set up Redis Sentinel for automatic failover across three nodes?",
+      "reason": "Sentinel topology is infrastructure/deployment concern; skill focuses on usage patterns not cluster setup"
+    },
+    {
+      "input": "How do I connect to Redis from Node.js using ioredis and handle connection errors?",
+      "reason": "Client library setup is language-specific; skill covers Redis commands and data patterns"
+    }
+  ]
+}
