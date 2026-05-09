@@ -7,7 +7,8 @@
       "expected_output": "Use iota inside a const block for type-safe enumerations. Define a named type (e.g. type Status int), then declare constants with iota. Add a String() method for human-readable output.",
       "assertions": [
         { "type": "contains", "value": "iota" },
-        { "type": "contains", "value": "const" }
+        { "type": "contains", "value": "const" },
+        { "type": "contains", "value": "String()" }
       ]
     },
     {
@@ -22,11 +23,21 @@
     {
       "id": 3,
       "prompt": "What are the main anti-patterns to avoid in Go code?",
-      "expected_output": "Avoid init() — use constructors like NewXxx(). Avoid global mutable variables — inject via Wire/constructors. Avoid panic — return errors. Never ignore errors with _ = f(). Avoid empty interface any parameters — use concrete types. Avoid package-name stuttering like log.LogError.",
+      "expected_output": "Avoid init() — use constructors like NewXxx(). Avoid global mutable variables — inject via Wire/constructors. Avoid panic — return errors. Never ignore errors with _ = f(). Avoid empty interface any parameters — use concrete types. Avoid package-name stuttering like log.LogError. Avoid goroutine leaks — always provide a ctx.Done() exit path. Avoid defer inside loops.",
       "assertions": [
         { "type": "contains", "value": "init" },
         { "type": "contains", "value": "panic" },
-        { "type": "contains", "value": "global" }
+        { "type": "contains", "value": "global" },
+        { "type": "contains", "value": "goroutine" }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I have a goroutine that runs in a loop processing tasks. What could go wrong and how should I design it?",
+      "expected_output": "Always provide a cancellation path via context.Context. Listen on ctx.Done() in a select statement. This prevents goroutine leaks when the caller wants to stop the work.",
+      "assertions": [
+        { "type": "contains", "value": "ctx" },
+        { "type": "contains", "value": "Done" }
       ]
     }
   ],

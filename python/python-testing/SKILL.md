@@ -1,6 +1,6 @@
 ---
 name: python-testing
-description: Python 测试体系——pytest 参数化、pytest-mock fixture、pytest-asyncio 异步测试与 respx HTTP mock。Use when writing unit tests, integration tests, mocking dependencies, or testing async FastAPI endpoints.
+description: Python 测试体系——pytest 参数化、pytest-mock fixture、pytest-asyncio 异步测试与 respx HTTP mock。Use when writing unit tests, integration tests, mocking dependencies, or testing async FastAPI endpoints. Apply whenever user writes @patch decorator chains, unittest.mock.AsyncMock directly, asks about asyncio_mode setting, or needs to inject a test DB session via app.dependency_overrides[get_db].
 metadata:
   triggers:
     files:

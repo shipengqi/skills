@@ -1,6 +1,6 @@
 ---
 name: golang-echo
-description: Echo framework patterns — engine setup, middleware, route groups, request binding, and error handling. Use when building Echo HTTP servers in Go. Complements golang-language, golang-architecture, golang-api-server skills.
+description: Echo framework patterns — engine setup, middleware, route groups, request binding, and error handling. Use when building Echo HTTP servers in Go. Apply whenever user writes echo.New(), echo.Context, c.Request().Context(), asks about Echo error handling, return-error handler pattern, or how Echo differs from Gin.
 metadata:
   triggers:
     files:

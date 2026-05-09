@@ -1,6 +1,6 @@
 ---
 name: nextjs-api
-description: Next.js Route Handlers, middleware, Auth.js integration, and environment variable conventions. Use when building API endpoints, adding authentication, or configuring request middleware.
+description: Next.js Route Handlers, middleware, Auth.js integration, and environment variable conventions. Use when building API endpoints, adding authentication, or configuring request middleware. Apply whenever user writes API routes in pages/api/ instead of app/api/route.ts, uses Next.js middleware without a matcher config, prefixes server-only secrets with NEXT_PUBLIC_, or accesses process.env directly without Zod validation via @t3-oss/env-nextjs.
 metadata:
   triggers:
     files:

@@ -1,6 +1,6 @@
 ---
 name: typescript-tooling
-description: Build toolchain for TypeScript Node.js projects and libraries — ESLint flat config, Prettier, tsup bundling, tsc type-checking, and pre-commit hooks. Use when configuring linting, formatting, building, or CI type-check pipelines.
+description: Build toolchain for TypeScript Node.js projects and libraries — ESLint flat config, Prettier, tsup bundling, tsc type-checking, and pre-commit hooks. Use when configuring linting, formatting, building, or CI type-check pipelines. Apply whenever user writes @ts-ignore, tsup/esbuild build scripts, ESLint flat config, lint-staged, husky pre-commit, or asks about tsc --noEmit in CI.
 metadata:
   triggers:
     files:

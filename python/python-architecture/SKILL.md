@@ -1,6 +1,6 @@
 ---
 name: python-architecture
-description: Python 服务分层架构、SQLAlchemy 2.x async、Alembic 迁移与 FastAPI Depends() 依赖注入。Use when structuring a new Python service, wiring dependencies, defining layer interfaces, or deciding where business logic belongs.
+description: Python 服务分层架构、SQLAlchemy 2.x async、Alembic 迁移与 FastAPI Depends() 依赖注入。Use when structuring a new Python service, wiring dependencies, defining layer interfaces, or deciding where business logic belongs. Apply whenever user writes SQLAlchemy models with Column() (old style), session.commit() in repositories, or asks about router→service→repository layering, Mapped[] annotations, or FastAPI Depends() wiring.
 metadata:
   triggers:
     files:

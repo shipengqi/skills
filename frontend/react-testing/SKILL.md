@@ -1,6 +1,6 @@
 ---
 name: react-testing
-description: React testing with Vitest + React Testing Library + MSW. Use when writing component tests, mocking API calls, or deciding what to test in a React application.
+description: React testing with Vitest + React Testing Library + MSW. Use when writing component tests, mocking API calls, or deciding what to test in a React application. Apply whenever user uses fireEvent instead of userEvent.setup(), getByTestId as default query, jest.fn() to mock fetch calls, or arbitrary setTimeout in tests instead of findBy* queries.
 metadata:
   triggers:
     files:

@@ -1,6 +1,6 @@
 ---
 name: python-fastapi
-description: FastAPI 应用搭建——app 初始化、路由分组、Pydantic schema、Depends() 依赖注入与中间件。Use when building FastAPI HTTP servers, adding middleware, defining routes, handling requests, or structuring FastAPI projects.
+description: FastAPI 应用搭建——app 初始化、路由分组、Pydantic schema、Depends() 依赖注入与中间件。Use when building FastAPI HTTP servers, adding middleware, defining routes, handling requests, or structuring FastAPI projects. Apply whenever user writes @app.on_event('startup'), defines get_current_user without Annotated type alias, or asks about Depends() caching behavior within a single request.
 metadata:
   triggers:
     files:

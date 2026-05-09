@@ -1,6 +1,6 @@
 ---
 name: react-state
-description: React state management — Zustand for client state, TanStack Query for server state. Use when deciding where state lives, setting up a store, fetching data, or handling mutations with cache invalidation.
+description: React state management — Zustand for client state, TanStack Query for server state. Use when deciding where state lives, setting up a store, fetching data, or handling mutations with cache invalidation. Apply whenever user uses useState+useEffect for fetched data, stores API response in Zustand, reads entire Zustand store without selectors, or asks about cache invalidation after mutations in TanStack Query.
 metadata:
   triggers:
     files:

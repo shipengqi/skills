@@ -1,6 +1,6 @@
 ---
 name: nextjs-app-router
-description: Next.js 13+ App Router — app/ directory structure, route groups, layouts, Server vs Client Components, and the "use client" boundary. Use when structuring a Next.js project, deciding component rendering strategy, or setting up loading/error states.
+description: Next.js 13+ App Router — app/ directory structure, route groups, layouts, Server vs Client Components, and the "use client" boundary. Use when structuring a Next.js project, deciding component rendering strategy, or setting up loading/error states. Apply whenever user adds "use client" to page.tsx or layout.tsx, asks how to group routes with a shared layout without affecting the URL, or asks how to show loading states in Server Components without useState.
 metadata:
   triggers:
     files:

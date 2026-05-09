@@ -1,6 +1,6 @@
 ---
 name: python-async
-description: Python asyncio 核心模式——并发任务、blocking 调用陷阱、超时处理与 FastAPI async/sync 选择。Use when writing async Python code, choosing between async and sync functions, handling concurrent tasks, or avoiding event loop blocking.
+description: Python asyncio 核心模式——并发任务、blocking 调用陷阱、超时处理与 FastAPI async/sync 选择。Use when writing async Python code, choosing between async and sync functions, handling concurrent tasks, or avoiding event loop blocking. Apply whenever user calls sync boto3/requests inside async def, asks whether all routes should be async def, or wants to run multiple async calls concurrently with asyncio.gather or TaskGroup.
 metadata:
   triggers:
     files:

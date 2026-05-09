@@ -1,6 +1,6 @@
 ---
 name: nestjs-database
-description: NestJS + Prisma — PrismaService setup, repository pattern, transactions, relations, pagination, and migrations. Use when integrating Prisma, designing the data layer, or writing database queries.
+description: NestJS + Prisma — PrismaService setup, repository pattern, transactions, relations, pagination, and migrations. Use when integrating Prisma, designing the data layer, or writing database queries. Apply whenever user queries Prisma without explicit select causing sensitive fields to leak, queries related data in loops causing N+1 problems, uses prisma migrate dev in production CI/CD instead of migrate deploy, or asks how to make multiple Prisma writes atomic with automatic rollback.
 metadata:
   triggers:
     files:

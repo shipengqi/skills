@@ -1,6 +1,6 @@
 ---
 name: angular-language
-description: Angular 17+ core patterns — standalone components, Signals, new control flow (@if/@for), lifecycle hooks, pipes, and the inject() function. Use when writing Angular components, defining inputs/outputs, or working with reactive state via Signals.
+description: Angular 17+ core patterns — standalone components, Signals, new control flow (@if/@for), lifecycle hooks, pipes, and the inject() function. Use when writing Angular components, defining inputs/outputs, or working with reactive state via Signals. Apply whenever user writes *ngFor without @for track expression, declares components in NgModule instead of standalone: true, uses constructor parameters for DI instead of inject(), or asks about reactive state without RxJS subscriptions.
 metadata:
   triggers:
     files:

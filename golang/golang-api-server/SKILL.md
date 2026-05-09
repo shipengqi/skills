@@ -1,6 +1,6 @@
 ---
 name: golang-api-server
-description: Framework-agnostic Go API server patterns — graceful shutdown, server interface, unified response, health endpoints. Use when building an HTTP or gRPC server, wiring startup/shutdown, or designing the server lifecycle in Go projects.
+description: Framework-agnostic Go API server patterns — graceful shutdown, server interface, unified response, health endpoints. Use when building an HTTP or gRPC server, wiring startup/shutdown, or designing the server lifecycle in Go projects. Apply whenever user defines a Server interface, implements RunOrDie/GracefulStop, sets up SIGTERM signal handling, configures health probes, or asks about startup sequence in Go.
 metadata:
   triggers:
     files:

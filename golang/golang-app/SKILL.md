@@ -1,6 +1,6 @@
 ---
 name: golang-app
-description: Go app bootstrap pattern — cobra command, pflag options with viper config loading, and the Options→Config pipeline. Use when wiring up a Go service entry point.
+description: Go app bootstrap pattern — cobra command, pflag options with viper config loading, and the Options→Config pipeline. Use when wiring up a Go service entry point. Apply whenever user writes cobra.Command, ServerOptions, AddFlags, viper.Unmarshal, mapstructure tags, or asks about cobra + viper config precedence in Go services.
 metadata:
   triggers:
     files:

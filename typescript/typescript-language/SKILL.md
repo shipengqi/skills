@@ -1,6 +1,6 @@
 ---
 name: typescript-language
-description: TypeScript core idioms — strict config, type system patterns, naming conventions, and anti-patterns. Use when writing TypeScript, defining types/interfaces, narrowing unknown values, or reviewing type correctness.
+description: TypeScript core idioms — strict config, type system patterns, naming conventions, and anti-patterns. Use when writing TypeScript, defining types/interfaces, narrowing unknown values, or reviewing type correctness. Apply whenever user writes enum, any, !, default export, or asks about discriminated unions, branded types, or TypeScript strict mode.
 metadata:
   triggers:
     files:

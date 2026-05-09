@@ -1,6 +1,6 @@
 ---
 name: nestjs-testing
-description: NestJS unit and E2E testing — Test.createTestingModule(), mocking providers with jest, supertest for HTTP assertions. Use when writing tests for NestJS services, controllers, or full application flows.
+description: NestJS unit and E2E testing — Test.createTestingModule(), mocking providers with jest, supertest for HTTP assertions. Use when writing tests for NestJS services, controllers, or full application flows. Apply whenever user instantiates NestJS services with new ServiceName() instead of Test.createTestingModule(), uses a real database in unit tests instead of mocking PrismaService with useValue, forgets app.close() in E2E afterAll(), or asks how to bypass JwtAuthGuard in E2E tests without modifying production code.
 metadata:
   triggers:
     files:

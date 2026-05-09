@@ -1,6 +1,6 @@
 ---
 name: python-logging
-description: Python 结构化日志——loguru 日常配置与使用，structlog 生产 JSON 日志管道。Use when initializing loggers, writing log statements, adding request context to logs, or configuring JSON log output in Python projects.
+description: Python 结构化日志——loguru 日常配置与使用，structlog 生产 JSON 日志管道。Use when initializing loggers, writing log statements, adding request context to logs, or configuring JSON log output in Python projects. Apply whenever user writes logger.info() with f-strings, print() for debug output, asks about request_id propagation in FastAPI, or whether repository layer should log errors before raising.
 metadata:
   triggers:
     files:

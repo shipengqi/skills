@@ -1,6 +1,6 @@
 ---
 name: golang-nethttp
-description: Go standard library net/http patterns with chi router — mux setup, middleware, route groups, request binding, and response writing. Use when building HTTP servers without a third-party framework in Go. Complements golang-language, golang-architecture, golang-api-server skills.
+description: Go standard library net/http patterns with chi router — mux setup, middleware, route groups, request binding, and response writing. Use when building HTTP servers without a third-party framework in Go. Apply whenever user writes http.HandlerFunc, chi.NewRouter(), r.Route(), chi.URLParam(), or asks about net/http middleware — never use http.DefaultServeMux.
 metadata:
   triggers:
     files:

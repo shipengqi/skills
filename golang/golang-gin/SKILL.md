@@ -1,6 +1,6 @@
 ---
 name: golang-gin
-description: Gin framework patterns — engine setup, middleware chain, route grouping, request binding, and response writing. Use when building Gin HTTP servers, adding middleware, defining routes, or handling requests in Go projects using the Gin framework.
+description: Gin framework patterns — engine setup, middleware chain, route grouping, request binding, and response writing. Use when building Gin HTTP servers, adding middleware, defining routes, or handling requests in Go projects using the Gin framework. Apply whenever user writes gin.New(), gin.Default(), gin.HandlerFunc, gin.Engine, or asks about middleware order, c.Abort(), or handler request binding in Gin.
 metadata:
   triggers:
     files:

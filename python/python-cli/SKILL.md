@@ -1,6 +1,6 @@
 ---
 name: python-cli
-description: Typer CLI 应用构建——命令定义、子命令、选项与参数、进度条与错误处理。Use when building command-line tools, adding subcommands, parsing arguments, or structuring a CLI application in Python.
+description: Typer CLI 应用构建——命令定义、子命令、选项与参数、进度条与错误处理。Use when building command-line tools, adding subcommands, parsing arguments, or structuring a CLI application in Python. Apply whenever user writes argparse, Click, or raw sys.argv for CLI, uses sys.exit(1) instead of typer.Exit(), or asks how to add subcommands or restrict argument values to an enum in Python.
 metadata:
   triggers:
     files:

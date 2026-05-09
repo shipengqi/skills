@@ -1,6 +1,6 @@
 ---
 name: nestjs-architecture
-description: NestJS module system, controllers, providers, dependency injection, and feature module structure. Use when scaffolding a NestJS project, wiring up modules, or designing the service layer.
+description: NestJS module system, controllers, providers, dependency injection, and feature module structure. Use when scaffolding a NestJS project, wiring up modules, or designing the service layer. Apply whenever user puts database queries or business logic in NestJS controllers, omits whitelist: true or forbidNonWhitelisted: true from ValidationPipe, forgets to export services from feature modules, or uses @Global() on feature modules instead of only cross-cutting infrastructure services.
 metadata:
   triggers:
     files:

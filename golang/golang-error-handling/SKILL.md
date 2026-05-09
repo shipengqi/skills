@@ -1,6 +1,6 @@
 ---
 name: golang-error-handling
-description: Go error handling using ErrorX sentinel pattern and errno directory structure. Use when defining errors, wrapping errors, propagating errors across layers, or checking error types in Go projects.
+description: Go error handling using ErrorX sentinel pattern and errno directory structure. Use when defining errors, wrapping errors, propagating errors across layers, checking error types, handling GORM/database errors, or when to log vs return an error in Go projects. Apply whenever writing or reviewing error handling code in any Go layer.
 metadata:
   triggers:
     files:

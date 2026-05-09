@@ -1,6 +1,6 @@
 ---
 name: python-error-handling
-description: Python 异常层级设计、跨层错误传播规范与 FastAPI 全局 HTTP 错误响应。Use when defining custom exceptions, propagating errors across service layers, or mapping domain errors to HTTP status codes in Python projects.
+description: Python 异常层级设计、跨层错误传播规范与 FastAPI 全局 HTTP 错误响应。Use when defining custom exceptions, propagating errors across service layers, or mapping domain errors to HTTP status codes in Python projects. Apply whenever user defines AppError subclasses, catches IntegrityError in repositories, raises HTTPException inside repository or service layers, or asks about global exception handler wiring in FastAPI.
 metadata:
   triggers:
     files:

@@ -1,6 +1,6 @@
 ---
 name: typescript-best-practices
-description: TypeScript async patterns, module conventions, error handling, and testing with Vitest. Use when writing async code, structuring modules, handling errors at boundaries, or writing unit tests in TypeScript projects.
+description: TypeScript async patterns, module conventions, error handling, and testing with Vitest. Use when writing async code, structuring modules, handling errors at boundaries, or writing unit tests in TypeScript projects. Apply whenever user writes async/await, Promise chains, try/catch, Vitest tests, or asks about error propagation or TypeScript DI patterns.
 metadata:
   triggers:
     files:

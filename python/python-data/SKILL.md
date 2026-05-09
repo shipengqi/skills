@@ -1,6 +1,6 @@
 ---
 name: python-data
-description: Pandas 核心操作模式、性能陷阱与 Polars 对比。Use when processing tabular data, performing data analysis, writing ETL pipelines, or deciding between Pandas and Polars in Python projects.
+description: Pandas 核心操作模式、性能陷阱与 Polars 对比。Use when processing tabular data, performing data analysis, writing ETL pipelines, or deciding between Pandas and Polars in Python projects. Apply whenever user writes iterrows() or itertuples() for numerical computation, reads large CSV without dtype or chunksize, or asks when to switch from Pandas to Polars.
 metadata:
   triggers:
     files:

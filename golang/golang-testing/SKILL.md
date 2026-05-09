@@ -1,6 +1,6 @@
 ---
 name: golang-testing
-description: Go testing with Ginkgo BDD suites, Gomega matchers, uber-go/mock mocks, and benchmarks. Use when writing unit tests, generating mocks for interfaces, or setting up test suites in Go projects.
+description: Go testing with Ginkgo BDD suites, Gomega matchers, uber-go/mock mocks, and benchmarks. Use when writing unit tests, generating mocks for interfaces, setting up test suites, or running parallel tests in Go projects. Apply whenever user writes Describe/It/BeforeEach blocks, uses mockgen, or asks about Ginkgo setup.
 metadata:
   triggers:
     files:

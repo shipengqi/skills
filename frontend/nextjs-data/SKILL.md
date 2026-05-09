@@ -1,6 +1,6 @@
 ---
 name: nextjs-data
-description: Next.js data fetching — Server Actions, fetch caching strategies, revalidation, TanStack Query in Client Components, next/image and next/font. Use when fetching data, handling mutations, or optimising asset loading.
+description: Next.js data fetching — Server Actions, fetch caching strategies, revalidation, TanStack Query in Client Components, next/image and next/font. Use when fetching data, handling mutations, or optimising asset loading. Apply whenever user calls API routes from Client Components to mutate data instead of using Server Actions, omits 'use server' directive, uses router.refresh() instead of revalidatePath after mutations, uses a plain <img> tag instead of next/image, or asks how to cache fetch with time-based revalidation.
 metadata:
   triggers:
     files:

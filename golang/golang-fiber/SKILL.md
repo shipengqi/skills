@@ -1,6 +1,6 @@
 ---
 name: golang-fiber
-description: Fiber framework patterns — app setup, middleware, route groups, request binding, and response writing. Use when building Fiber HTTP servers in Go. Complements golang-language, golang-architecture, golang-api-server skills.
+description: Fiber framework patterns — app setup, middleware, route groups, request binding, and response writing. Use when building Fiber HTTP servers in Go. Apply whenever user writes fiber.New(), fiber.Ctx, c.UserContext(), c.BodyParser(), or asks about Fiber middleware control flow or how Fiber differs from Gin — the fasthttp/net-http and c.UserContext() distinctions are critical.
 metadata:
   triggers:
     files:

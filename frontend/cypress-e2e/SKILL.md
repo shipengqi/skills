@@ -1,6 +1,6 @@
 ---
 name: cypress-e2e
-description: Cypress E2E testing — config, data-cy selectors, Custom Commands, cy.intercept with request assertions and fixture, and network error simulation. Use when writing end-to-end tests, stubbing API responses, or setting up Cypress in a project.
+description: Cypress E2E testing — config, data-cy selectors, Custom Commands, cy.intercept with request assertions and fixture, and network error simulation. Use when writing end-to-end tests, stubbing API responses, or setting up Cypress in a project. Apply whenever user selects elements by CSS class, id, or data-testid instead of data-cy attributes, uses cy.wait(milliseconds) instead of cy.wait('@alias') after API interactions, or repeats login steps in each test instead of using cy.session().
 metadata:
   triggers:
     files:

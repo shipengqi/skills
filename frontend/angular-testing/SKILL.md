@@ -1,6 +1,6 @@
 ---
 name: angular-testing
-description: Angular 17+ testing with Jest + TestBed — standalone component tests, service tests, HTTP mocking, and signal-based input testing. Use when writing unit tests for Angular components or services.
+description: Angular 17+ testing with Jest + TestBed — standalone component tests, service tests, HTTP mocking, and signal-based input testing. Use when writing unit tests for Angular components or services. Apply whenever user sets signal inputs via component.myInput.set() instead of fixture.componentRef.setInput(), imports HttpClientTestingModule instead of provideHttpClientTesting(), forgets fixture.detectChanges() after state changes, or needs to test a functional guard that uses inject().
 metadata:
   triggers:
     files:

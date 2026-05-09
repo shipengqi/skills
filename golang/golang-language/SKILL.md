@@ -1,6 +1,6 @@
 ---
 name: golang-language
-description: Go 语言核心 idioms、命名规范、包结构与接口设计准则。Use when writing or reviewing Go code, especially when creating new packages, defining interfaces, or structuring a project.
+description: Go 语言核心 idioms、命名规范、包结构与接口设计准则。Use when writing or reviewing any Go code — naming conventions, package layout, interface design, enum patterns, anti-patterns, or verifying Go code correctness. Trigger whenever the user writes Go functions, types, packages, or asks about idiomatic Go style.
 metadata:
   triggers:
     files:
@@ -11,6 +11,11 @@ metadata:
       - idiomatic go
       - go interface
       - go package
+      - go struct
+      - go naming
+      - go enum
+      - go iota
+      - go anti-pattern
 ---
 
 # Go Language Standards
@@ -132,6 +137,8 @@ buf := &bytes.Buffer{}
 - ❌ 忽略错误 `_ = f()` — 必须处理或显式注释原因
 - ❌ 空接口参数 `func f(v any)` — 用具体类型或泛型约束
 - ❌ 包名与类型名重复（stutter）— `log.Logger` 不是 `log.LogLogger`
+- ❌ Goroutine 泄漏 — 所有 goroutine 必须有退出路径，通过 `ctx.Done()` 或 channel 控制
+- ❌ `defer` 在循环内 — defer 在函数退出时才执行，循环内累积导致资源未及时释放；改用内部函数包裹
 
 ## Verification Workflow
 

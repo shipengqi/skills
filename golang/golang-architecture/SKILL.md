@@ -1,6 +1,6 @@
 ---
 name: golang-architecture
-description: Clean Architecture layer design and Google Wire dependency injection for Go services. Use when structuring a new service, wiring dependencies, defining layer interfaces, or deciding where business logic belongs.
+description: Clean Architecture layer design and Google Wire dependency injection for Go services. Use when structuring a new service, wiring dependencies, defining layer interfaces, deciding where business logic belongs, or when a handler is accessing the database directly. Always apply this skill when the user writes or reviews handler/biz/store/model layers, Wire setup, or asks about Go service architecture.
 metadata:
   triggers:
     files:

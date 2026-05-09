@@ -1,6 +1,6 @@
 ---
 name: golang-makefile
-description: Makefile patterns for Go projects — layered include structure, version injection from git, tools auto-install, and ##@ help system. Use when setting up or extending a Go project's build system.
+description: Makefile patterns for Go projects — layered include structure, version injection from git, tools auto-install, and ##@ help system. Use when setting up or extending a Go project's build system. Apply whenever user writes Makefile targets, asks about ldflags version injection, golangci-lint auto-install, or asks how to structure a Go project's build system.
 metadata:
   triggers:
     files:

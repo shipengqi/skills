@@ -1,6 +1,6 @@
 ---
 name: react-language
-description: React 18 core patterns — JSX, hooks rules, component composition, Suspense, Error Boundaries. Use when writing React components, defining custom hooks, or reviewing hook usage correctness.
+description: React 18 core patterns — JSX, hooks rules, component composition, Suspense, Error Boundaries. Use when writing React components, defining custom hooks, or reviewing hook usage correctness. Apply whenever user calls useState inside conditions or loops, uses useEffect to sync derived state, or asks how to share logic between multiple components without duplication.
 metadata:
   triggers:
     files:

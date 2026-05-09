@@ -1,6 +1,6 @@
 ---
 name: python-language
-description: Python 核心 idioms、类型注解规范、命名约定与项目工具链（uv + ruff + pyright）。Use when writing or reviewing Python code, especially when creating new modules, defining types, or structuring a project.
+description: Python 核心 idioms、类型注解规范、命名约定与项目工具链（uv + ruff + pyright）。Use when writing or reviewing Python code, especially when creating new modules, defining types, or structuring a project. Apply whenever user writes List[str]/Dict[str,int], Optional[X], str+Enum combination, print() for debug logging, or asks about Python naming conventions, type annotations, or uv/ruff/pyright toolchain.
 metadata:
   triggers:
     files:

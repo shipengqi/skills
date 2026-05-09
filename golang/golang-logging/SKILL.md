@@ -1,6 +1,6 @@
 ---
 name: golang-logging
-description: Go structured logging using Zap Sugar API with context propagation. Use when initializing loggers, writing log statements, extracting request context into logs, or configuring log output in Go projects.
+description: Go structured logging using Zap Sugar API with context propagation. Use when initializing loggers, writing log statements, extracting request context into logs, configuring log output, or deciding which layer should log. Apply whenever user writes log.Infow/Errorw/Warnw calls, uses zap fields, or asks about request-ID propagation in Go projects.
 metadata:
   triggers:
     files:

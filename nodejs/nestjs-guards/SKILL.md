@@ -1,6 +1,6 @@
 ---
 name: nestjs-guards
-description: NestJS Guards, Interceptors, Pipes, and Exception Filters — authentication, request/response transformation, validation pipelines, and centralised error handling. Use when adding auth, logging, validation, or standardising error responses.
+description: NestJS Guards, Interceptors, Pipes, and Exception Filters — authentication, request/response transformation, validation pipelines, and centralised error handling. Use when adding auth, logging, validation, or standardising error responses. Apply whenever user writes JWT guards with passport strategy instead of directly with JwtService, omits transform: true on ValidationPipe causing DTOs to arrive as plain objects, throws raw Error instead of NestJS HttpException subclasses in services, or asks about exception filter registration order.
 metadata:
   triggers:
     files:

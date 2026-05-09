@@ -1,6 +1,6 @@
 ---
 name: react-patterns
-description: React component architecture — feature-based folder structure, custom hooks extraction, compound components, and composition patterns. Use when structuring a React project, extracting logic, or deciding between component patterns.
+description: React component architecture — feature-based folder structure, custom hooks extraction, compound components, and composition patterns. Use when structuring a React project, extracting logic, or deciding between component patterns. Apply whenever user asks about folder structure for large React apps, compound component APIs with too many props, or whether to use render props or custom hooks for logic sharing.
 metadata:
   triggers:
     files:

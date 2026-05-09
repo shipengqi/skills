@@ -1,6 +1,6 @@
 ---
 name: typescript-security
-description: Code-layer security for TypeScript — input validation, XSS/injection prevention, authentication principles, CORS, and secrets hygiene. Use when validating user input, handling auth tokens, sanitizing HTML, managing secrets, or defending against injection attacks.
+description: Code-layer security for TypeScript — input validation, XSS/injection prevention, authentication principles, CORS, and secrets hygiene. Use when validating user input, handling auth tokens, sanitizing HTML, managing secrets, or defending against injection attacks. Apply whenever user writes localStorage.setItem, execSync, execFileSync, Zod safeParse, or asks about JWT storage, password hashing (Argon2id vs bcrypt), command injection, or SSRF prevention in TypeScript.
 metadata:
   triggers:
     files:

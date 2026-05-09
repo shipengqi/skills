@@ -1,6 +1,6 @@
 ---
 name: angular-forms
-description: Angular 17+ Typed Reactive Forms — FormBuilder, FormGroup, Validators, FormArray, and Signal integration. Use when building forms, adding validation, or reading form state reactively.
+description: Angular 17+ Typed Reactive Forms — FormBuilder, FormGroup, Validators, FormArray, and Signal integration. Use when building forms, adding validation, or reading form state reactively. Apply whenever user uses new FormGroup() without FormBuilder.nonNullable, reads form.value instead of getRawValue() for form submission, shows validation errors without checking .touched, or asks how to add and remove dynamic form fields with FormArray.
 metadata:
   triggers:
     files:

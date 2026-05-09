@@ -1,6 +1,6 @@
 ---
 name: react-forms
-description: React form patterns — react-hook-form with Zod validation, Controller for complex inputs, server error handling. Use when building forms, adding validation, or integrating custom input components.
+description: React form patterns — react-hook-form with Zod validation, Controller for complex inputs, server error handling. Use when building forms, adding validation, or integrating custom input components. Apply whenever user defines TypeScript types separately from Zod schema, uses useState per form field, or asks how to integrate a custom non-ref-forwarding input component with react-hook-form.
 metadata:
   triggers:
     files:

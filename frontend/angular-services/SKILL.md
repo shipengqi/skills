@@ -1,6 +1,6 @@
 ---
 name: angular-services
-description: Angular 17+ services, DI, HttpClient with functional interceptors, and functional route guards. Use when wiring up services, HTTP calls, authentication guards, or request/response interceptors.
+description: Angular 17+ services, DI, HttpClient with functional interceptors, and functional route guards. Use when wiring up services, HTTP calls, authentication guards, or request/response interceptors. Apply whenever user implements class-based HttpInterceptor instead of HttpInterceptorFn, registers interceptors with HTTP_INTERCEPTORS token instead of withInterceptors(), writes class-based CanActivate instead of CanActivateFn, or uses router.navigate() instead of createUrlTree() inside a guard.
 metadata:
   triggers:
     files:
