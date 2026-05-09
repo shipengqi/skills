@@ -22,11 +22,12 @@ const ALL_SKILLS = manifest.plugins;
 
 function usage() {
   console.log(`
-Usage: claude-skills <command> [skill-name]
+Usage: claude-skills <command> [skill-name|category]
 
 Commands:
   list                List all available skills
   add <name>          Install a specific skill
+  add <category>      Install all skills in a category (golang, typescript, python, frontend, nodejs, database)
   add --all           Install all skills
   remove <name>       Remove a specific skill
   remove --all        Remove all skills
@@ -111,8 +112,17 @@ async function main() {
 
     const skill = ALL_SKILLS.find(s => s.name === arg);
     if (!skill) {
-      console.error(`\nUnknown skill: "${arg}". Run "claude-skills list" to see available skills.\n`);
-      process.exit(1);
+      const categorySkills = ALL_SKILLS.filter(s => s.source.replace(/^\.\//, '').split('/')[0] === arg);
+      if (categorySkills.length === 0) {
+        console.error(`\nUnknown skill or category: "${arg}". Run "claude-skills list" to see available skills.\n`);
+        process.exit(1);
+      }
+      console.log(`\nInstalling ${categorySkills.length} skills in ${arg}:\n`);
+      for (const s of categorySkills) {
+        await installSkill(s);
+      }
+      console.log(`\nDone. Installed ${categorySkills.length} skills to ${SKILLS_DIR}\n`);
+      return;
     }
 
     console.log(`\nInstalling ${skill.name}...\n`);

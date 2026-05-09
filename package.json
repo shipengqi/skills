@@ -1,7 +1,7 @@
 {
   "name": "@shipengqi/claude-skills",
   "version": "0.1.0",
-  "description": "Engineering best-practice skills for Claude Code — Go, TypeScript, and Python",
+  "description": "Engineering best-practice skills for Claude Code — Go, TypeScript, Python, React, Angular, Next.js, NestJS, and Database",
   "scripts": {
     "benchmark": "node bin/benchmark.js"
   },
@@ -13,10 +13,13 @@
     "golang/",
     "typescript/",
     "python/",
+    "frontend/",
+    "nodejs/",
+    "database/",
     "metadata.json",
     ".claude-plugin/"
   ],
-  "keywords": ["claude", "claude-code", "skills", "golang", "typescript", "python"],
+  "keywords": ["claude", "claude-code", "skills", "golang", "typescript", "python", "react", "angular", "nextjs", "nestjs", "redis", "postgres"],
   "author": "shipengqi",
   "license": "MIT",
   "homepage": "https://github.com/shipengqi/skills",
