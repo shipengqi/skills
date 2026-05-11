@@ -116,6 +116,9 @@ npx @shipengqi/claude-skills add --all
 # Install specific
 npx @shipengqi/claude-skills add react-language
 
+# Install specific tech stack
+npx @shipengqi/claude-skills add golang
+
 # List
 npx @shipengqi/claude-skills list
 
@@ -142,3 +145,26 @@ Generates `benchmarks/benchmark-report.md` with token counts, cost estimates per
 Each skill is a directory with a `SKILL.md` file that Claude Code loads automatically based on trigger conditions (e.g., presence of `go.mod`, `*.tsx` files). Skills symlink from the repo into `~/.claude/skills/`.
 
 After installing, restart Claude Code to load the new skills.
+
+## Publishing
+
+This package is published to npm as [`@shipengqi/claude-skills`](https://www.npmjs.com/package/@shipengqi/claude-skills).
+
+### Release steps
+
+```bash
+# 1. Bump version (patch / minor / major)
+npm version patch
+
+# 2. Preview what will be published
+npm pack --dry-run
+
+# 3. Publish (scoped packages require --access public on first publish)
+npm publish --access public
+```
+
+`npm version` automatically creates a git commit and tag. Push them after publishing:
+
+```bash
+git push && git push --tags
+```
