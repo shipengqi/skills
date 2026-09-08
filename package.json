@@ -1,6 +1,6 @@
 {
   "name": "@shipengqi/skills",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Engineering best-practice skills for Claude Code — Go, TypeScript, Python, React, Angular, Next.js, NestJS, and Database",
   "private": true,
   "keywords": [
