@@ -1,7 +1,7 @@
 {
   "name": "shipengqi-skills",
   "description": "Engineering best-practice skills for Go, TypeScript, Python, React, Angular, Next.js, and NestJS — covering architecture, error handling, logging, testing, HTTP frameworks, async patterns, forms, and state management.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "shipengqi"
   },
@@ -9,8 +9,21 @@
   "repository": "https://github.com/shipengqi/skills",
   "license": "MIT",
   "keywords": [
-    "go", "golang", "typescript", "python", "react", "angular", "nextjs", "nestjs",
-    "best-practices", "architecture", "gin", "echo", "fiber", "fastapi", "prisma"
+    "go",
+    "golang",
+    "typescript",
+    "python",
+    "react",
+    "angular",
+    "nextjs",
+    "nestjs",
+    "best-practices",
+    "architecture",
+    "gin",
+    "echo",
+    "fiber",
+    "fastapi",
+    "prisma"
   ],
   "skills": [
     "./common/engineering",
