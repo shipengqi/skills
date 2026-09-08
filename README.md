@@ -4,6 +4,13 @@ Engineering best-practice skills for Claude Code — Go, TypeScript, Python, Rea
 
 ## Skills
 
+### Common
+
+| Skill | Description |
+|-------|-------------|
+| `engineering` | Always-on engineering habits: CodeGraph-first exploration, ADR capture, vocabulary recording, context-saturation handoff, timeout handling, GitHub-first reference lookup, and test gate |
+| `session` | Session health check and handoff document generation — `/session status`, `/session handoff`, `/session glossary` |
+
 ### Go
 
 | Skill | Description |
