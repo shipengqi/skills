@@ -1,0 +1,82 @@
+[
+  {
+    "query": "/session status",
+    "should_trigger": true
+  },
+  {
+    "query": "/session handoff",
+    "should_trigger": true
+  },
+  {
+    "query": "/session glossary",
+    "should_trigger": true
+  },
+  {
+    "query": "上下文快满了，帮我生成一个交接文档，我要开新会话",
+    "should_trigger": true
+  },
+  {
+    "query": "我们今天做了很多事情，感觉 context 快不够用了，怎么办",
+    "should_trigger": true
+  },
+  {
+    "query": "能不能帮我检查一下现在的会话状态健不健康",
+    "should_trigger": true
+  },
+  {
+    "query": "我想在结束这个会话之前生成一份总结，方便下次继续",
+    "should_trigger": true
+  },
+  {
+    "query": "项目里有一些专有词汇我想记录一下，能帮我看看词汇表吗",
+    "should_trigger": true
+  },
+  {
+    "query": "session handoff 现在执行一下",
+    "should_trigger": true
+  },
+  {
+    "query": "我需要切换到新任务，但想先把当前进度保存下来",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我写一个 Go 的 HTTP 中间件，用于记录请求日志",
+    "should_trigger": false
+  },
+  {
+    "query": "git log 最近的提交记录是什么",
+    "should_trigger": false
+  },
+  {
+    "query": "这段 TypeScript 代码为什么报类型错误？const x: string = 123",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我重构这个函数，把回调改成 async/await",
+    "should_trigger": false
+  },
+  {
+    "query": "数据库查询很慢，怎么加索引优化",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我写单元测试，覆盖 parseConfig 函数的边界情况",
+    "should_trigger": false
+  },
+  {
+    "query": "解释一下这段 Python 代码的逻辑",
+    "should_trigger": false
+  },
+  {
+    "query": "把这个 JSON schema 转成 TypeScript 类型定义",
+    "should_trigger": false
+  },
+  {
+    "query": "我想了解 Redis 的 LRU 淘汰策略是怎么工作的",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我 review 一下这个 PR 的代码",
+    "should_trigger": false
+  }
+]

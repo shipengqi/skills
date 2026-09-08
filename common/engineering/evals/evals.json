@@ -1,0 +1,35 @@
+{
+  "skill_name": "engineering",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "项目根目录下有 .codegraph/ 目录。请帮我找一下 UserService 是在哪个文件里定义的。",
+      "expected_output": "Claude 应该调用 codegraph_explore(\"UserService\") 而不是用 grep 或 find 命令",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我们刚讨论完，决定用 Event Sourcing 模式来处理订单状态的变更，主要原因是审计日志需求。",
+      "expected_output": "Claude 应该主动提示这是一个架构决策，建议在 .agents/adr/ 目录记录 ADR，并提供起草帮助",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "帮我运行一下全量测试：go test ./...",
+      "expected_output": "如果命令超时，Claude 应立即输出手动执行的提示和命令，而不是重试或等待",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "代码里到处都出现了 SCI 这个缩写，你知道是什么意思吗？",
+      "expected_output": "Claude 应该询问用户 SCI 是否是项目专有词汇，并提议记录到词汇表 .agents/glossary.md",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "我们已经完成了认证模块重构、数据库迁移脚本、API 网关配置三个大模块的改动，现在继续做监控告警模块。",
+      "expected_output": "Claude 应该识别到已覆盖 3 个以上不同任务，主动提示上下文快满了，建议执行交接，并输出交接文档",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "query": "项目里有 .codegraph/ 目录，我想知道 PaymentService 的 processRefund 方法在哪里被调用",
+    "should_trigger": true
+  },
+  {
+    "query": "我们刚决定用 CQRS 模式把读写分离，主要是为了解决报表查询慢的问题，你觉得怎么样？",
+    "should_trigger": true
+  },
+  {
+    "query": "跑了一下 npm run build 结果没有输出，等了好久也没反应",
+    "should_trigger": true
+  },
+  {
+    "query": "代码里反复出现 MUW 这个词，每次我都猜不出来是什么意思",
+    "should_trigger": true
+  },
+  {
+    "query": "今天已经做了登录模块重构、数据库 schema 迁移、消息队列接入、前端权限控制四个大功能，现在要继续做导出功能",
+    "should_trigger": true
+  },
+  {
+    "query": "我需要看一下 github.com/gin-gonic/gin 里 RouterGroup 是怎么实现的，有没有好的方式",
+    "should_trigger": true
+  },
+  {
+    "query": "刚完成了第一个 todo，准备开始下一个，但是我没写测试",
+    "should_trigger": true
+  },
+  {
+    "query": "我要做一个架构决策：是用 Redis Pub/Sub 还是 Kafka 来做事件总线，两个方案你怎么看",
+    "should_trigger": true
+  },
+  {
+    "query": "pytest -x 跑了两分钟还没结束，terminal 卡住了",
+    "should_trigger": true
+  },
+  {
+    "query": "代码里 TCC 这个包名挺奇怪的，在我们项目里是什么含义？",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我写一个 Python 函数，接受一个列表，返回其中的偶数",
+    "should_trigger": false
+  },
+  {
+    "query": "把这段 Go 代码的变量名从驼峰改成下划线风格",
+    "should_trigger": true
+  },
+  {
+    "query": "解释一下 HTTP 304 状态码是什么意思",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我写一个 README.md，介绍这个项目的功能和安装方式",
+    "should_trigger": false
+  },
+  {
+    "query": "这个 SQL 查询怎么加索引能快一点？SELECT * FROM orders WHERE status = 'pending' ORDER BY created_at",
+    "should_trigger": false
+  },
+  {
+    "query": "把这个 JSON 转换成 YAML 格式",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我看看这段 React 组件有没有什么 bug：const [count, setCount] = useState(0)",
+    "should_trigger": false
+  },
+  {
+    "query": "我想了解一下 REST 和 GraphQL 各自的优缺点",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我把这个函数加一下单元测试，用 Jest",
+    "should_trigger": false
+  },
+  {
+    "query": "翻译一下这段英文注释成中文",
+    "should_trigger": false
+  }
+]

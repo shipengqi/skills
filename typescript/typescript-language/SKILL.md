@@ -136,11 +136,15 @@ type Result<T> =
   | { ok: true;  data: T }
   | { ok: false; error: string };
 
-// Exhaustive switch — TypeScript catches missing cases
+// Exhaustive switch with never check — TypeScript errors if a case is unhandled
 function handle<T>(result: Result<T>): T {
   switch (result.ok) {
     case true:  return result.data;
     case false: throw new Error(result.error);
+    default: {
+      const _exhaustive: never = result;
+      throw new Error(`Unhandled case: ${JSON.stringify(_exhaustive)}`);
+    }
   }
 }
 
@@ -149,6 +153,32 @@ type ApiEvent =
   | { type: 'created'; payload: CreatePayload }
   | { type: 'updated'; payload: UpdatePayload }
   | { type: 'deleted'; id: string };
+```
+
+Add a new union member without handling it → TypeScript reports a type error at the `never` assignment.
+
+## Branded Types
+
+Prevent mixing structurally identical primitives at compile time with zero runtime cost:
+
+```ts
+// Without branding — UserId and PostId are interchangeable (bug!)
+type UserId = string;
+type PostId = string;
+
+// Branded types — compiler catches swapped IDs
+type UserId = string & { readonly __brand: 'UserId' };
+type PostId = string & { readonly __brand: 'PostId' };
+
+// Constructor function validates and casts
+function UserId(raw: string): UserId {
+  return raw as UserId;
+}
+
+// Compile error if IDs are swapped
+function getPost(userId: UserId, postId: PostId) { ... }
+getPost(UserId('u-1'), PostId('p-1'));  // ✓
+getPost(PostId('p-1'), UserId('u-1')); // ✗ compile error
 ```
 
 ## `readonly` and Immutability

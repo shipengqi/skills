@@ -1,0 +1,29 @@
+{
+  "skill_name": "session",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/session status",
+      "expected_output": "输出包含计划文件复杂度、修改文件数、任务覆盖估算，以及综合建议（🟢/🟡/🔴），格式符合 skill 规定的模板",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "/session handoff",
+      "expected_output": "输出包含「已完成」列表、「当前状态」段落、「修改文件」列表、以及「新会话提示词」（150 词以内），格式符合 skill 规定的模板",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "/session glossary",
+      "expected_output": "当 .agents/glossary.md 不存在时，提示词汇表尚未创建，并询问是否现在创建",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "上下文快满了，帮我做个交接",
+      "expected_output": "识别为 session handoff 意图，输出完整的上下文交接文档和新会话提示词",
+      "files": []
+    }
+  ]
+}

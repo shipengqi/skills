@@ -166,6 +166,8 @@ async def get_current_user(
 CurrentUser = Annotated[User, Depends(get_current_user)]
 ```
 
+**Depends() 在同一 request 内会缓存结果**：同一请求中多个路由函数调用 `Depends(get_db)`，FastAPI 自动复用同一个 session 实例，不会为每个 `Depends()` 调用重新创建连接。这是默认行为，无需额外配置。若需每次调用都重新执行（不缓存），传 `use_cache=False`：`Depends(get_db, use_cache=False)`。
+
 ## Middleware
 
 ```python
@@ -221,7 +223,7 @@ settings = Settings()
 
 ## Anti-Patterns
 
-- ❌ `@app.on_event("startup")` — 已弃用，用 `lifespan` context manager
+- ❌ `@app.on_event("startup")` — deprecated，用 `lifespan` context manager 替代
 - ❌ 在 router 函数里直接查 DB — 通过 `Depends()` 注入 service
 - ❌ `response_model` 省略 — 始终声明，确保响应 schema 文档化和验证
 - ❌ `HTTPException` 在 service/repository 里 raise — 用业务异常，router 以下不知道 HTTP
